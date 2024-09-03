@@ -34,13 +34,15 @@
     kubectl apply -f webmonitor-service.yaml
     kubectl apply -f runcontrol-service.yaml
     ```
-5. start load balancer
+5. start nginx as load balancer and expose it using service component
     ```shell
     kubectl apply -f  nginx-deployment.yaml
+    kubectl apply -f  nginx-service.yaml
     ```
-6. forward port
+   
+6. get entrypoint url
    ```shell
-   kubectl port-forward $(kubectl get pods | grep nginx-loadbalancer | awk '{print $1}') 4200:80
+   minikube service entrypoint
    ```
    
 ### Delete cluster 
