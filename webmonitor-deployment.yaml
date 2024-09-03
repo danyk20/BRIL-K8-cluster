@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webmonitor-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webmonitor
+  template:
+    metadata:
+      labels:
+        app: webmonitor
+    spec:
+      containers:
+      - name: bril-webmonitor
+        image: bril-webmonitor:0.0.1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: runcontrol-client-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: runcontrol-client
+  template:
+    metadata:
+      labels:
+        app: runcontrol-client
+    spec:
+      containers:
+      - name: bril-runcontrol-client
+        image: bril-runcontrol-client:0.0.1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
