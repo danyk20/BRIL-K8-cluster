@@ -46,5 +46,6 @@
 ### Delete cluster 
 ```shell
 kubectl delete all --all
-minikube delete --all=true
+minikube stop
+minikube delete --all=true --purge=true
 ```
