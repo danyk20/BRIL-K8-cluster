@@ -1,0 +1,8 @@
+appName: nginx
+version: 0.0.1
+imageName:  bril-nginx
+port: 80
+nodePort: 30080
+replicas: 2
+service:
+  type: LoadBalancer

@@ -1,0 +1,7 @@
+appName: webmonitor
+version: 0.0.1
+imageName:  bril-webmonitor
+port: 3000
+replicas: 3
+service:
+  type: ClusterIP

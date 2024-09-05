@@ -1,0 +1,7 @@
+appName: runcontrol-client
+version: 0.0.1
+imageName:  bril-runcontrol-client
+port: 3000
+replicas: 3
+service:
+  type: ClusterIP
