@@ -133,3 +133,7 @@ master-node.cern.ch    Ready      control-plane   34m   v1.31.1
 slave-node-1.cern.ch   Ready      <none>          26s   v1.31.1
 slave-node-2.cern.ch   NotReady   <none>          10s   v1.31.1
 ```
+
+## Resources
+
+To understand each individual command form the script have a look into this blog https://kanzal.com/kubernetes-with-kubeadm-on-redhat-9/
