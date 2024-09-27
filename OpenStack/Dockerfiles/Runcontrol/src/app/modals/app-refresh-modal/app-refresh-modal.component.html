@@ -1,0 +1,19 @@
+<clr-modal
+    #modal
+    [(clrModalOpen)]="open"
+    [clrModalSize]="'lg'"
+    [clrModalClosable]="true">
+
+    <h3 class="modal-title">
+        This web application needs to be refreshed
+    </h3>
+
+    <div class="modal-body">
+        Auto refresh in {{timeRemaining}}s.
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="refreshNow()">Refresh now</button>
+        <button type="button" class="btn btn-outline" (click)="cancel()">Refresh later</button>
+    </div>
+</clr-modal>

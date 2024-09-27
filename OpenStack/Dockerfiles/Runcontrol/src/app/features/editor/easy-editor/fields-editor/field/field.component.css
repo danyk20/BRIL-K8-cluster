@@ -1,0 +1,19 @@
+h6 {
+    font-weight: bold;
+}
+
+.table {
+    margin: 0px;
+}
+
+clr-input-container {
+    margin-top: 0;
+}
+
+clr-checkbox-wrapper {
+    margin-top: 0;
+}
+
+input[type='text'] {
+    width: 100%;
+}

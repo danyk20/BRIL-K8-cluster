@@ -1,0 +1,7 @@
+.inline-form > clr-input-container {
+    padding-top: 0px;
+}
+
+.inline-form > clr-checkbox-wrapper > label {
+    padding-right: 1em;
+}

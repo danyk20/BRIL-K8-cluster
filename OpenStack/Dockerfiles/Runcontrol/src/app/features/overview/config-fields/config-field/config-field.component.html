@@ -1,0 +1,45 @@
+<b>{{field.name}}</b>:
+<span [ngSwitch]="field.type">
+    <span *ngSwitchCase="'string'"
+          class="text-primary">
+        {{field.value}}
+    </span>
+    <span *ngSwitchCase="'commaSeparatedString'"
+          class="text-primary">
+        {{field.value.join()}}
+    </span>
+    <span *ngSwitchCase="'integer'"
+          class="badge badge-light-blue">
+        {{field.value}}
+    </span>
+    <span *ngSwitchCase="'unsignedInt'"
+          class="badge badge-light-blue">
+        {{field.value}}
+    </span>
+    <span *ngSwitchCase="'float'"
+          class="badge badge-light-blue">
+        {{field.value}}
+    </span>
+    <small *ngSwitchCase="'stringArray'">
+        <span *ngFor="let value of field.value; let i = index;">
+            <br/>
+            <span style="padding-left: 6px;">{{$i}}: </span>
+            <span class="text-primary">{{value[1]}}</span>
+        </span>
+    </small>
+    <small *ngSwitchCase="'stringMap'">
+        <span *ngFor="let key of ObjectKeys(field.value)">
+            <br/>
+            <span style="padding-left: 6px;">{{key}}: </span>
+            <span class="text-primary">{{field.value[key]}}</span>
+        </span>
+    </small>
+    <span *ngSwitchCase="'bool'" class="label"
+          [class.label-success]="field.value === 1 || field.value === 'true'">
+        {{field.value}}
+    </span>
+    <span *ngSwitchDefault>
+        {{field.value}}
+    </span>
+</span>
+<!-- {{field.type}} -->

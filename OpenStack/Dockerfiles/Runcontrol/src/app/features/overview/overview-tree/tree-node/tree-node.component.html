@@ -1,0 +1,48 @@
+<div *ngIf="node.isLeaf" class="overview-tree-node">
+    <span class="tooltip">
+        <clr-icon *ngIf="node.icon"
+                  [attr.shape]="node.icon"
+                  [class]="node.iconClass">
+        </clr-icon>
+        <span *ngIf="node.spinner" class="spinner spinner-inline"></span>
+        <span class="tooltip-content">{{node.tooltip}}</span>
+    </span>
+    <old-version-indicator
+        [runningVersion]="node.runningVersion"
+        [newestVersion]="node.newestVersion">
+    </old-version-indicator>
+
+    <a #dropdown (click)="toggleDropdown($event)" style="cursor: pointer;"
+       [class.bc-dropdown-toggle-active]="dropdownIsOpen">
+        {{node.name}}
+    </a>
+
+    <div class="dropdown open" #dropdownMenu
+         [class.open]="dropdownIsOpen">
+        <div class="dropdown-menu">
+            <config-action-menu
+                [path]="node.path"
+                [state]="node.state"
+                [configDetails]="node.configDetails"
+                [actionRequest]="node.actionRequest">
+            </config-action-menu>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!node.isLeaf" class="overview-tree-node">
+    <button (click)="node.expanded = !node.expanded" class="tree-caret-btn">
+        <clr-icon
+            shape="caret"
+            [attr.dir]="node.expanded ? 'down' : 'right'">
+        </clr-icon>
+        {{node.name}}
+    </button>
+</div>
+
+<div class="overview-tree-node-children" *ngIf="!node.isLeaf" [hidden]="!node.expanded">
+    <overview-tree-node
+        *ngFor="let childNode of node.nodes"
+        [node]="childNode">
+    </overview-tree-node>
+</div>

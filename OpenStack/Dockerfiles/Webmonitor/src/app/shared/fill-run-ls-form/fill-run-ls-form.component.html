@@ -1,0 +1,20 @@
+<div clrForm class="inline-form">
+    <clr-input-container *ngIf="fillEnabled">
+        <label>FILL:</label>
+        <input clrInput type="number" [(ngModel)]="fill" step="1" min="1000" max="9999">
+    </clr-input-container>
+
+    <clr-input-container *ngIf="runEnabled">
+        <label>RUN:</label>
+        <input clrInput type="number" [(ngModel)]="run" step="1" min="100000" max="999999">
+    </clr-input-container>
+
+    <clr-input-container *ngIf="lsEnabled">
+        <label>LS:</label>
+        <input clrInput type="number" [(ngModel)]="ls" step="1" min="1" max="99999">
+    </clr-input-container>
+
+    <button class="btn btn-primary" (click)="query()">
+        Query
+    </button>
+</div>

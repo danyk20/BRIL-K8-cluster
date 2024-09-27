@@ -1,0 +1,60 @@
+<div class="clr-row">
+    <div class="clr-col-lg-7">
+        <div class="editor-header">
+            <h3 class="editor-header-text">
+                Editor
+                <span
+                    [hidden]="!(isEditorModeExpert$ | async)"
+                    class="text-danger">
+                    (expert mode)
+                </span>
+            </h3>
+
+            <div class="editor-mode-toggle">
+                <clr-toggle-wrapper>
+                    <input id="editor_mode_toggle" type="checkbox" clrToggle
+                           [checked]="isEditorModeExpert$ | async"
+                           (change)="switchMode()">
+                    <label for="editor_mode_toggle">Expert mode</label>
+                </clr-toggle-wrapper>
+            </div>
+        </div>
+
+        <expert-editor
+            *ngIf="(isEditorModeExpert$ | async); else easyEditor"
+            [configDetails]="configDetails$ | async"
+            (preview)="showFinalXML($event)"
+            (submit)="submitXML($event)">
+        </expert-editor>
+
+        <ng-template #easyEditor>
+            <easy-editor
+                [configDetails]="configDetails$ | async"
+                (preview)="showXMLFromFields($event)"
+                (submit)="submitFields($event)">
+            </easy-editor>
+        </ng-template>
+    </div>
+
+    <div class="clr-col-lg-5">
+        <history-table
+            [entries]="history$ | async"
+            [selectedVersion]="selectedVersion"
+            (loadOlder)="loadOlderHistory()"
+            (selectVersion)="selectVersion($event)">
+        </history-table>
+    </div>
+</div>
+
+<confirm-modal #confirmModal> </confirm-modal>
+
+<preview-modal
+    [state]="previewModal$ | async"
+    (close)="closeModal('preview')">
+</preview-modal>
+
+<response-modal
+    #responseModal
+    [state]="responseModal$ | async"
+    (close)="closeModal('response')">
+</response-modal>

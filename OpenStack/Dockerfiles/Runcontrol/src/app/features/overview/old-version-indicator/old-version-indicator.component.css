@@ -1,0 +1,7 @@
+.tooltip-content {
+    display: block;
+    background: black;
+    color: white;
+    border-radius: 3px;
+    padding: 6px;
+}

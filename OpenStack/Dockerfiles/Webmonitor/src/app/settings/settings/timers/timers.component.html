@@ -1,0 +1,43 @@
+<div class="form">
+    <section clrForm class="form-block">
+        <label>Create new timer (in seconds)</label>
+            <clr-input-container>
+                <label>Interval</label>
+                <input clrInput [(ngModel)]="intervalInput" type="number" min="0.5" step="0.1" />
+            </clr-input-container>
+        <button class="btn btn-primary"
+                (click)="create(intervalInput)">
+            Create
+        </button>
+    </section>
+
+    <section clrForm class="form-block">
+
+        <label>Existing timers (seconds)</label>
+
+        <clr-datagrid>
+            <clr-dg-column>Id</clr-dg-column>
+            <clr-dg-column>Interval</clr-dg-column>
+            <clr-dg-column>Subscribers</clr-dg-column>
+
+            <clr-dg-row *clrDgItems="let timer of timers; let i = index" [clrDgItem]="timer">
+                <clr-dg-action-overflow>
+                    <button class="action-item" (click)="remove(timer)">Remove</button>
+                </clr-dg-action-overflow>
+                <clr-dg-cell>{{i}}</clr-dg-cell>
+                <clr-dg-cell>{{timer.interval}}</clr-dg-cell>
+                <clr-dg-cell>{{timer.observerCount}}</clr-dg-cell>
+            </clr-dg-row>
+        </clr-datagrid>
+
+        <button class="btn"
+                (click)="updateTimers(undefined)">
+            Refresh
+        </button>
+
+        <button class="btn btn-danger"
+                (click)="removeAll()">
+            Remove all
+        </button>
+    </section>
+</div>

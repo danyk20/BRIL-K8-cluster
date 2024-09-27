@@ -1,0 +1,678 @@
+{
+    "timers": [6],
+    "widgets": [{
+        "type": "range-query",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 150
+            },
+            "wrapper": {
+                "title": "Fill range query",
+                "queryDetectors": true
+            },
+            "widget": {
+                "key": "fillnum",
+                "inputType": "number",
+                "channel": 1,
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-vdmshape"
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "peak_x",
+                "startEnabled": false,
+                "queryDetectors": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "tooltipInfo": [
+                    {"fieldname": "fillnum", "text": "Fill"},
+                    {"fieldname": "detectorname", "text": "Detector"}
+                ],
+                "queryChannel": 1,
+                "rangeRefresh": {
+                    "enabled": true,
+                    "index": "cmsos-data-bril-vdmshape",
+                    "field": "fillnum",
+                    "range": 30
+                },
+                "yAxisTitle": "L/(N1*N2)",
+                "forceMarkers": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "lineColor": "darkmagenta",
+                        "lineDash": "dash",
+                        "lineWidth": 1,
+                        "text": "FILL ",
+                        "fieldname": "fillnum"
+                    }]
+                },
+                "rangeQueries": [
+                    {"fieldname": "fillnum"}
+                ],
+                "sources": [{
+                    "index": "cmsos-data-bril-vdmshape",
+                    "timestampField": "timestamp_end",
+                    "fields": [{"name": "avgpeak", "seriesName": "PLT"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "pltlumizero", "plane": "X"}
+                }, {
+                    "index": "cmsos-data-bril-vdmshape",
+                    "timestampField": "timestamp_end",
+                    "fields": [{"name": "avgpeak", "seriesName": "BCM1F"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "bcm1flumi", "plane": "X"}
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "peak_y",
+                "startEnabled": false,
+                "queryDetectors": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "tooltipInfo": [
+                    {"fieldname": "fillnum", "text": "Fill"},
+                    {"fieldname": "detectorname", "text": "Detector"}
+                ],
+                "queryChannel": 1,
+                "rangeRefresh": {
+                    "enabled": true,
+                    "index": "cmsos-data-bril-vdmshape",
+                    "field": "fillnum",
+                    "range": 30
+                },
+                "yAxisTitle": "L/(N1*N2)",
+                "forceMarkers": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "lineColor": "darkmagenta",
+                        "lineDash": "dash",
+                        "lineWidth": 1,
+                        "text": "FILL ",
+                        "fieldname": "fillnum"
+                    }]
+                },
+                "rangeQueries": [
+                    {"fieldname": "fillnum"}
+                ],
+                "sources": [{
+                    "index": "cmsos-data-bril-vdmshape",
+                    "timestampField": "timestamp_end",
+                    "fields": [{"name": "avgpeak", "seriesName": "PLT"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "pltlumizero", "plane": "Y"}
+                }, {
+                    "index": "cmsos-data-bril-vdmshape",
+                    "timestampField": "timestamp_end",
+                    "fields": [{"name": "avgpeak", "seriesName": "BCM1F"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "bcm1flumi", "plane": "Y"}
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "width_x",
+                "startEnabled": false,
+                "queryDetectors": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "tooltipInfo": [
+                    {"fieldname": "fillnum", "text": "Fill"},
+                    {"fieldname": "detectorname", "text": "Detector"}
+                ],
+                "queryChannel": 1,
+                "rangeRefresh": {
+                    "enabled": true,
+                    "index": "cmsos-data-bril-vdmshape",
+                    "field": "fillnum",
+                    "range": 30
+                },
+                "forceMarkers": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "lineColor": "darkmagenta",
+                        "lineDash": "dash",
+                        "lineWidth": 1,
+                        "text": "FILL ",
+                        "fieldname": "fillnum"
+                    }]
+                },
+                "rangeQueries": [
+                    {"fieldname": "fillnum"}
+                ],
+                "sources": [{
+                    "index": "cmsos-data-bril-vdmshape",
+                    "timestampField": "timestamp_end",
+                    "fields": [{"name": "avgwidth", "seriesName": "PLT"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "pltlumizero", "plane": "X"}
+                }, {
+                    "index": "cmsos-data-bril-vdmshape",
+                    "timestampField": "timestamp_end",
+                    "fields": [{"name": "avgwidth", "seriesName": "BCM1F"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "bcm1flumi", "plane": "X"}
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "width_y",
+                "startEnabled": false,
+                "queryDetectors": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "tooltipInfo": [
+                    {"fieldname": "fillnum", "text": "Fill"},
+                    {"fieldname": "detectorname", "text": "Detector"}
+                ],
+                "queryChannel": 1,
+                "rangeRefresh": {
+                    "enabled": true,
+                    "index": "cmsos-data-bril-vdmshape",
+                    "field": "fillnum",
+                    "range": 30
+                },
+                "forceMarkers": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "lineColor": "darkmagenta",
+                        "lineDash": "dash",
+                        "lineWidth": 1,
+                        "text": "FILL ",
+                        "fieldname": "fillnum"
+                    }]
+                },
+                "rangeQueries": [
+                    {"fieldname": "fillnum"}
+                ],
+                "sources": [{
+                    "index": "cmsos-data-bril-vdmshape",
+                    "timestampField": "timestamp_end",
+                    "fields": [{"name": "avgwidth", "seriesName": "PLT"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "pltlumizero", "plane": "Y"}
+                }, {
+                    "index": "cmsos-data-bril-vdmshape",
+                    "timestampField": "timestamp_end",
+                      "fields": [{"name": "avgwidth", "seriesName": "BCM1F"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "bcm1flumi", "plane": "Y"}
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "SigVis",
+                "startEnabled": false,
+                "queryDetectors": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "tooltipInfo": [
+                    {"fieldname": "fillnum", "text": "Fill"},
+                    {"fieldname": "detectorname", "text": "Detector"}
+                ],
+                "queryChannel": 1,
+                "rangeRefresh": {
+                    "enabled": true,
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "field": "fillnum",
+                    "range": 30
+                },
+                "forceMarkers": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "lineColor": "darkmagenta",
+                        "lineDash": "dash",
+                        "lineWidth": 1,
+                        "text": "FILL ",
+                        "fieldname": "fillnum"
+                    }]
+                },
+                "rangeQueries": [
+                    {"fieldname": "fillnum"}
+                ],
+                "sources": [{
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "fields": [{"name": "avgsigma", "seriesName": "PLT"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "pltlumizero"}
+                }, {
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "fields": [{"name": "avgsigma", "seriesName": "BCM1F"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "bcm1flumi"}
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "pileup",
+                "startEnabled": false,
+                "queryDetectors": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "tooltipInfo": [
+                    {"fieldname": "fillnum", "text": "Fill"},
+                    {"fieldname": "detectorname", "text": "Detector"}
+                ],
+                "queryChannel": 1,
+                "rangeRefresh": {
+                    "enabled": true,
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "field": "fillnum",
+                    "range": 30
+                },
+                "forceMarkers": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "lineColor": "darkmagenta",
+                        "lineDash": "dash",
+                        "lineWidth": 1,
+                        "text": "FILL ",
+                        "fieldname": "fillnum"
+                    }]
+                },
+                "rangeQueries": [
+                    {"fieldname": "fillnum"}
+                ],
+                "sources": [{
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "fields": [{"name": "avgpileup", "seriesName": "PLT"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "pltlumizero"}
+                }, {
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "fields": [{"name": "avgpileup", "seriesName": "BCM1F"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "bcm1flumi"}
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "Emittance X",
+                "startEnabled": false,
+                "queryDetectors": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "tooltipInfo": [
+                    {"fieldname": "fillnum", "text": "Fill"},
+                    {"fieldname": "detectorname", "text": "Detector"}
+                ],
+                "queryChannel": 1,
+                "rangeRefresh": {
+                    "enabled": true,
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "field": "fillnum",
+                    "range": 30
+                },
+                "forceMarkers": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "lineColor": "darkmagenta",
+                        "lineDash": "dash",
+                        "lineWidth": 1,
+                        "text": "FILL ",
+                        "fieldname": "fillnum"
+                    }]
+                },
+                "rangeQueries": [
+                    {"fieldname": "fillnum"}
+                ],
+                "sources": [{
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "fields": [{"name": "avgemittanceX", "seriesName": "PLT"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "pltlumizero"}
+                }, {
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "fields": [{"name": "avgemittanceX", "seriesName": "BCM1F"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "bcm1flumi"}
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "Emittance Y",
+                "startEnabled": false,
+                "queryDetectors": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "tooltipInfo": [
+                    {"fieldname": "fillnum", "text": "Fill"},
+                    {"fieldname": "detectorname", "text": "Detector"}
+                ],
+                "queryChannel": 1,
+                "rangeRefresh": {
+                    "enabled": true,
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "field": "fillnum",
+                    "range": 30
+                },
+                "forceMarkers": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "lineColor": "darkmagenta",
+                        "lineDash": "dash",
+                        "lineWidth": 1,
+                        "text": "FILL ",
+                        "fieldname": "fillnum"
+                    }]
+                },
+                "rangeQueries": [
+                    {"fieldname": "fillnum"}
+                ],
+                "sources": [{
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "fields": [{"name": "avgemittanceY", "seriesName": "PLT"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "pltlumizero"}
+                }, {
+                    "index": "cmsos-data-bril-vdmsigma",
+                    "fields": [{"name": "avgemittanceY", "seriesName": "BCM1F"}],
+                    "extraFields": [{"name": "fillnum"}, {"name": "detectorname"}],
+                    "terms": {"detectorname": "bcm1flumi"}
+                }]
+            }
+        }
+
+    }, {
+        "type": "string-plus-date-query",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 70
+            },
+            "wrapper": {
+                "title": "VDM per bunch detector+date query"
+            },
+            "widget": {
+                "channel": 2,
+                "label": "Detector"
+            }
+        }
+    }, {
+        "type": "vdm-bx",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "Peak X per bunch"
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-vdmshape",
+                "chartType": "scattergl",
+                "queryChannel": 2,
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "horizontal",
+                "timestampField": "timestamp_end",
+                "detectorField": "detectorname",
+                "detectorFieldCase": "lowcase",
+                "fields": [{
+                    "seriesName": "bxpeak x",
+                    "name": "bxpeak",
+                    "error": "bxpeak_err"
+                }],
+                "terms": {"plane": "X"}
+            }
+        }
+    }, {
+        "type": "vdm-bx",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "Peak Y per bunch"
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-vdmshape",
+                "chartType": "scattergl",
+                "queryChannel": 2,
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "horizontal",
+                "timestampField": "timestamp_end",
+                "detectorField": "detectorname",
+                "detectorFieldCase": "lowcase",
+                "fields": [{
+                    "seriesName": "bxpeak y",
+                    "name": "bxpeak",
+                    "error": "bxpeak_err"
+                }],
+                "terms": {"plane": "Y"}
+            }
+        }
+    }, {
+        "type": "vdm-bx",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "Width X per bunch"
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-vdmshape",
+                "chartType": "scattergl",
+                "queryChannel": 2,
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "horizontal",
+                "timestampField": "timestamp_end",
+                "detectorField": "detectorname",
+                "detectorFieldCase": "lowcase",
+                "fields": [{
+                    "seriesName": "bxwidth x",
+                    "name": "bxwidth",
+                    "error": "bxwidth_err"
+                }],
+                "terms": {"plane": "X"}
+            }
+        }
+    }, {
+        "type": "vdm-bx",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "Peak Y per bunch"
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-vdmshape",
+                "chartType": "scattergl",
+                "queryChannel": 2,
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "horizontal",
+                "timestampField": "timestamp_end",
+                "detectorField": "detectorname",
+                "detectorFieldCase": "lowcase",
+                "fields": [{
+                    "seriesName": "bxwidth y",
+                    "name": "bxwidth",
+                    "error": "bxwidth_err"
+                }],
+                "terms": {"plane": "Y"}
+            }
+        }
+
+    }, {
+        "type": "vdm-bx",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "SigVis per bunch"
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-vdmsigma",
+                "chartType": "scattergl",
+                "queryChannel": 2,
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "horizontal",
+                "timestampField": "timestamp",
+                "detectorField": "detectorname",
+                "detectorFieldCase": "lowcase",
+                "fields": [{"name": "bxsigma", "error": "bxsigmaerror"}]
+            }
+        }
+    }, {
+        "type": "vdm-bx",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "Pileup per bunch"
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-vdmsigma",
+                "chartType": "scattergl",
+                "queryChannel": 2,
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "horizontal",
+                "timestampField": "timestamp",
+                "detectorField": "detectorname",
+                "detectorFieldCase": "lowcase",
+                "fields": [{"name": "pileup"}]
+            }
+        }
+    }, {
+        "type": "vdm-bx",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "Emittance X per bunch"
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-vdmsigma",
+                "chartType": "scattergl",
+                "queryChannel": 2,
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "horizontal",
+                "timestampField": "timestamp",
+                "detectorField": "detectorname",
+                "detectorFieldCase": "lowcase",
+                "fields": [{"name": "bxemittanceX", "error": "bxemittanceX_err"}]
+            }
+        }
+    }, {
+        "type": "vdm-bx",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "Emittance Y per bunch"
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-vdmsigma",
+                "chartType": "scattergl",
+                "queryChannel": 2,
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "horizontal",
+                "timestampField": "timestamp",
+                "detectorField": "detectorname",
+                "detectorFieldCase": "lowcase",
+                "fields": [{"name": "bxemittanceY", "error": "bxemittanceY_err"}]
+            }
+        }
+    }]
+}

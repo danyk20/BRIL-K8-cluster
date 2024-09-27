@@ -1,0 +1,15 @@
+<wm-widget [config]="config ? config.wrapper : undefined"
+           [info]="info">
+    <div class="widget-content">
+        <wm-range-form
+            [key]="wi.key"
+            [label]="wi.label"
+            [inputType]="wi.inputType"
+            [database]="wi.database"
+            [index]="wi.index"
+            [queryDetectors]="config.wrapper.queryDetectors"
+            [queryFits]="config.wrapper.queryFits"
+            (query)="query($event)">
+        </wm-range-form>
+    </div>
+</wm-widget>

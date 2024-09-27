@@ -1,0 +1,37 @@
+<clr-main-container>
+    <overview-header
+        [users]="rcmsUsers"
+        [selectedUser]="selectedRCMSUser$ | async"
+        [isLoading]="isLoading$ | async"
+        (userChange)="selectRcmsUser($event)"
+        (refresh)="refresh()">
+    </overview-header>
+    <div class="content-container">
+        <div class="dark-curtain" [hidden]="!(requestsFailing$ | async)">
+            <clr-icon shape="error" class="is-danger" size="300"></clr-icon>
+            <h1 class="text-danger">Requests are failing</h1>
+        </div>
+        <div class="content-area">
+            <overview-active-panel
+                [activePaths]="activeConfigIds$ | async"
+                [states]="runningStates$ | async"
+                [running]="runningDetails$ | async"
+                [configDetails]="configDetails$ | async"
+                [actionRequests]="actionRequests$ | async" >
+            </overview-active-panel>
+        </div>
+        <nav class="sidenav">
+            <div class="curtain" [hidden]="!(isLoading$ | async)"></div>
+            <section>
+                <overview-tree
+                    style="display: block;"
+                    [configs]="userConfigurations$ | async"
+                    [running]="runningDetails$ | async"
+                    [states]="runningStates$ | async"
+                    [configDetails]="configDetails$ | async"
+                    [actionRequests]="actionRequests$ | async" >
+                </overview-tree>
+            </section>
+        </nav>
+    </div>
+</clr-main-container>

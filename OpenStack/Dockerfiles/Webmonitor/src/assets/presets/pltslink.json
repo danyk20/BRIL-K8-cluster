@@ -1,0 +1,89 @@
+{
+    "timers": [90],
+    "widgets": [{
+        "type": "time-query",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 60
+            },
+            "widget": {
+                "channel": 1
+            }
+        }
+    }, {
+        "type": "array-lines",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 400
+            },
+            "wrapper": {
+                "title": "PLTSLINK efficiencies",
+                "started": true,
+                "infoEnabled": true,
+                "controlsEnabled": true,
+                "queriesEnabled": true,
+                "startEnabled": true,
+                "initialTimer": 0
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-pltslinkprocessormon",
+                "field": "eff_perchannel",
+                "queryChannel": 1,
+                "legend": "left",
+                "liveWindow": 14400000,
+                "aggregationThreshold": 72000000,
+                "aggregationAlgo": "avg",
+                "refreshSize": 45,
+                "yAxisTitle": "rates",
+                "series": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                "legendNames": [
+                    "Ch 0", "Ch 1", "Ch 2", "Ch 3", "Ch 4", "Ch 5", "Ch 6",
+                    "Ch 7", "Ch 8", "Ch 9", "Ch 10", "Ch 11", "Ch 12", "Ch 13",
+                    "Ch 14", "Ch 15"],
+                "terms": {
+                    "flash_key": "@http://vmepc-s2d16-06-01.cms:9233-11-"
+                }
+            }
+        }
+    }, {
+        "type": "array-lines",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 400
+            },
+            "wrapper": {
+                "title": "PLTSLINK accidentals",
+                "started": true,
+                "infoEnabled": true,
+                "controlsEnabled": true,
+                "queriesEnabled": true,
+                "startEnabled": true,
+                "initialTimer": 0
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-pltslinkprocessormon",
+                "field": "acc_perchannel",
+                "queryChannel": 1,
+                "legend": "left",
+                "liveWindow": 14400000,
+                "aggregationThreshold": 72000000,
+                "aggregationAlgo": "avg",
+                "refreshSize": 45,
+                "yAxisTitle": "rates",
+                "series": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                "legendNames": [
+                    "Ch 0", "Ch 1", "Ch 2", "Ch 3", "Ch 4", "Ch 5", "Ch 6",
+                    "Ch 7", "Ch 8", "Ch 9", "Ch 10", "Ch 11", "Ch 12", "Ch 13",
+                    "Ch 14", "Ch 15"],
+                "terms": {
+                    "flash_key": "@http://vmepc-s2d16-06-01.cms:9233-11-"
+                }
+            }
+        }
+    }]
+}

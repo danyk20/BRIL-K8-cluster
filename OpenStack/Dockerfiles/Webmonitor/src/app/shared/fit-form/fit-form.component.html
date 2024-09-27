@@ -1,0 +1,16 @@
+<div>
+    <clr-combobox-container>
+      <label>Choose fits</label>
+        <clr-combobox [(ngModel)]="selection" (ngModelChange)="onChange($event)" name="multiSelect" clrMulti="true" required>
+            <ng-container *clrOptionSelected="let selected">
+              {{selected}}
+            </ng-container>
+          <clr-options [style.width.%]="200">
+            <clr-option *clrOptionItems="let fitName of fitNames" [clrValue]="fitName">
+              {{fitName}}
+            </clr-option>
+          </clr-options>
+        </clr-combobox>
+      <clr-control-helper>Availabe fits for this preset</clr-control-helper>
+    </clr-combobox-container>
+</div>

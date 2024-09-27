@@ -1,0 +1,6 @@
+.clr-input {
+    /* The width is slightly more than the size of the modal so that it always
+    appears to be 100% (it is always confined by the modal in any case).
+    width: 100% does not work */
+    width: 500px;
+}

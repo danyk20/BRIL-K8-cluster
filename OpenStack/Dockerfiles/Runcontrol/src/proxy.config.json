@@ -1,0 +1,9 @@
+{
+    "/runcontrol18/api/**": {
+        "target": "http://localhost:10770/",
+        "secure": false,
+        "pathRewrite": {
+            "^/runcontrol18": "/runcontrol"
+        }
+    }
+}

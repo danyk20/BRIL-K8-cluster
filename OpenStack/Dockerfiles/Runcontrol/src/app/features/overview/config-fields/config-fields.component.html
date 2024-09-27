@@ -1,0 +1,8 @@
+<span *ngIf="fields !== 'ERROR'">
+    <div *ngFor="let field of fields" class="field">
+        <config-field
+            *ngIf="!field.hideInOverview"
+            [field]="field">
+        </config-field>
+    </div>
+</span>

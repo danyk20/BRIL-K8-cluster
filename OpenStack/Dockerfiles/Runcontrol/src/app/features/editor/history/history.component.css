@@ -1,0 +1,14 @@
+.selected {
+    background-color: #89CBDF;
+}
+
+.btn.btn-sm {
+    margin: 0 0;
+    visibility: hidden;
+    min-width: initial;
+    padding: 0px 4px;
+}
+
+tr:hover .btn.btn-sm {
+    visibility: visible;
+}

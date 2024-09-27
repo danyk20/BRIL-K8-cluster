@@ -1,0 +1,10 @@
+<div clrForm>
+    <div class="btn-group btn-primary btn-sm">
+        <button
+            *ngFor="let opt of options"
+            class="btn"
+            (click)="query(opt)">
+            {{opt.text}}
+        </button>
+    </div>
+</div>

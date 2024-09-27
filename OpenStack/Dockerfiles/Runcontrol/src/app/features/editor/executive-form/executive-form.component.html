@@ -1,0 +1,109 @@
+<form clrForm>
+    <fieldset [disabled]="disabled">
+        <div class="clr-row">
+            <div class="clr-col-12 clr-col-sm-6">
+                <div class="tooltip">
+                    <clr-input-container>
+                        <label class="form-label">Host</label>
+                        <input
+                            clrInput
+                            class="form-input"
+                            type="text"
+                            [(ngModel)]="executive.host"
+                            name="inputTextHost">
+                    </clr-input-container>
+
+                    <span class="tooltip-content" [hidden]="disabled">
+                        Must match Context and Endpoint hosts
+                    </span>
+                </div>
+            </div>
+
+            <div class="clr-col-12 clr-col-sm-6">
+                <div class="tooltip">
+                    <clr-input-container>
+                        <label class="form-label">Port</label>
+                        <input
+                            clrInput
+                            class="form-input"
+                            type="number"
+                            [(ngModel)]="executive.port"
+                            name="inputTextPort">
+                    </clr-input-container>
+                    <span class="tooltip-content" [hidden]="disabled">
+                        Must match Context port
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="clr-row">
+            <div class="clr-col-12 clr-col-sm-6">
+                <clr-input-container>
+                    <label class="form-label">Role</label>
+                    <input
+                        clrInput
+                        class="form-input"
+                        type="text"
+                        [(ngModel)]="executive.role"
+                        name="inputTextRole">
+                </clr-input-container>
+            </div>
+
+            <div class="clr-col-12 clr-col-sm-6">
+                <clr-input-container>
+                    <label class="form-label">Log URL</label>
+                    <input
+                        clrInput
+                        class="form-input"
+                        type="text"
+                        [(ngModel)]="executive.logURL"
+                        name="inputTextLogURL">
+                </clr-input-container>
+            </div>
+        </div>
+
+        <div class="clr-row">
+            <div class="clr-col-12 clr-col-sm-6">
+                <clr-select-container>
+                    <label class="form-label">Log Level</label>
+                    <select
+                        clrSelect
+                        [(ngModel)]="executive.logLevel"
+                        name="selectLogLevel">
+                        <option>ERROR</option>
+                        <option>WARN</option>
+                        <option>INFO</option>
+                        <option>DEBUG</option>
+                    </select>
+                </clr-select-container>
+            </div>
+
+            <div class="clr-col-12 clr-col-sm-6">
+                <clr-input-container>
+                    <label class="form-label">Path to executive</label>
+                    <input
+                        clrInput
+                        class="form-input"
+                        type="text"
+                        [(ngModel)]="executive.pathToExecutive"
+                        name="inputTextPathToExecutive">
+                </clr-input-container>
+            </div>
+        </div>
+
+        <div class="clr-row">
+            <div class="clr-col-12 clr-col-sm-12">
+                <clr-input-container>
+                    <label class="env-label">Environment string</label>
+                    <input
+                        clrInput
+                        class="form-input"
+                        type="text"
+                        [(ngModel)]="executive.environmentString"
+                        name="inputTextEnvironmentString">
+                </clr-input-container>
+            </div>
+        </div>
+    </fieldset>
+</form>

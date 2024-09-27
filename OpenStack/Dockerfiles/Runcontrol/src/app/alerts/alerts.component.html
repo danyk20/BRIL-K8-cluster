@@ -1,0 +1,25 @@
+<ng-container *ngIf="alerts && alerts.length">
+    <clr-alert
+        [clrAlertType]="'alert-' + alerts[0].type"
+        [clrAlertAppLevel]="true"
+        [clrAlertClosable]="alerts[0].closable"
+        [(clrAlertClosed)]="closed">
+        <clr-alert-item>
+            <div class="alert-text">{{alerts[0].text}}</div>
+            <div *ngIf="alerts[0].actions.firstAction" class="alert-actions">
+                <button
+                    class="btn alert-action"
+                    (click)="process(alerts[0], 'firstAction')">
+                    {{alerts[0].actions.firstAction.text}}
+                </button>
+            </div>
+            <div *ngIf="alerts[0].actions.secondAction" class="alert-actions">
+                <button
+                    class="btn alert-action"
+                    (click)="process(alerts[0], 'secondAction')">
+                    {{alerts[0].actions.secondAction.text}}
+                </button>
+            </div>
+        </clr-alert-item>
+    </clr-alert>
+</ng-container>

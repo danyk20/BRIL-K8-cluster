@@ -1,0 +1,21 @@
+// This object contains the path to the module and the module name for each widget name
+export const widgetModuleSelector = {
+    'static-label': ['app/widgets/static-label-widget/static-label-widget.module', 'StaticLabelWidgetModule'],
+    'label': ['app/widgets/label-widget/label-widget.module', 'LabelWidgetModule'],
+    'time-query': ['app/widgets/time-query-widget/time-query-widget.module', 'TimeQueryWidgetModule'],
+    'range-query': ['app/widgets/range-query/range-query.module', 'RangeQueryModule'],
+    'fill-run-ls-query': ['app/widgets/fill-run-ls-query-widget/fill-run-ls-query-widget.module', 'FillRunLsQueryWidgetModule'],
+    'event-bus-tester': ['app/widgets/event-bus-test-widget/event-bus-test-widget.module', 'EventBusTestWidgetModule'],
+    'numeric-field': ['app/widgets/numeric-field/numeric-field.module', 'NumericFieldModule'],
+    'array-snapshot': ['app/widgets/array-snapshot/array-snapshot.module', 'ArraySnapshotModule'],
+    'array-lines': ['app/widgets/array-field/array-lines.module', 'ArrayLinesModule'],
+    'array-lines-basicx': ['app/widgets/array-field/array-lines-basicx.module', 'ArrayLinesBasicXModule'],
+    'array-heatmap': ['app/widgets/array-field/array-heatmap.module', 'ArrayHeatmapModule'],
+    'numeric-field-with-ratios': ['app/widgets/numeric-field-with-ratios/numeric-field-with-ratios.module', 'NumericFieldWithRatiosModule'],
+    'pileup': ['app/widgets/pileup/pileup.module', 'PileupModule'],
+    'images': ['app/widgets/binary-images/binary-images.module', 'BinaryImagesModule'],
+    'dynamic-form-test': ['app/widgets/dynamic-form-test/dynamic-form-test.module', 'DynamicFormTestModule'],
+    'numeric-field-split': ['app/widgets/numeric-field-split/numeric-field-split.module', 'NumericFieldSplitModule'],
+    'vdm-bx': ['app/widgets/vdm-bx/vdm-bx.module', 'VDMBXModule'],
+    'string-plus-date-query': ['app/widgets/string-plus-date-query/string-plus-date-query.module', 'StringPlusDateQueryModule'],
+};

@@ -1,0 +1,10 @@
+.editor {
+    height: 700px;
+    width: 100%;
+    border: solid 1px grey;
+}
+
+clr-checkbox-wrapper {
+    display: inline-block;
+    margin: 0 1em;
+}

@@ -1,0 +1,40 @@
+<wm-widget [config]="config.wrapper"
+           [info]="info"
+           (refresh)="onRefreshEvent()"
+           (start)="onStartEvent()"
+           (timer)="updateLive()"
+           #widgetWrapper>
+
+    <div class="widget-options"></div>
+
+    <div class="widget-queries">
+        <wm-fill-run-ls-form
+            *ngIf="config.widget.runLsQueriesEnabled"
+            [fillEnabled]="false" [runEnabled]="true" [lsEnabled]="true"
+            (query)="queryRunLs($event)">
+        </wm-fill-run-ls-form>
+    </div>
+
+    <div class="widget-content">
+        <clr-alert
+            [clrAlertType]="'alert-danger'"
+            [clrAlertClosable]="false"
+            *ngIf="needWebGLFallback">
+            <div clr-alert-item class="alert-item">
+                <span class="alert-text">
+                    This chart relies on WebGL technology, which is not
+                    supported or turned off in this browser. Would you like to
+                    try using fallback methods?
+                </span>
+                <div class="alert-actions">
+                    <button class="btn alert-action"
+                            (click)="tryWebGLFallback()">
+                        Try fallback
+                    </button>
+                </div>
+            </div>
+        </clr-alert>
+
+        <div #plot style="height: 100%; width: 100%"></div>
+    </div>
+</wm-widget>

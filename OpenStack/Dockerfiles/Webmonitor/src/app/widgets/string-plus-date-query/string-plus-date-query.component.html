@@ -1,0 +1,10 @@
+<wm-widget
+    [config]="config ? config.wrapper : undefined">
+    <div class="widget-content">
+        <wm-string-plus-date-form
+            [key]="key"
+            [label]="label"
+            (query)="query($event)">
+        </wm-string-plus-date-form>
+    </div>
+</wm-widget>

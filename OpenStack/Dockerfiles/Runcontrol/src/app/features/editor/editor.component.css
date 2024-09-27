@@ -1,0 +1,14 @@
+.editor-header {
+    position: relative;
+}
+
+.editor-header-text {
+    display: inline-block;
+}
+
+.editor-mode-toggle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 8px;
+}

@@ -1,0 +1,21 @@
+<clr-modal
+    #modal
+    [(clrModalOpen)]="open"
+    [clrModalSize]="'sm'"
+    [clrModalClosable]="true">
+
+    <h3 class="modal-title">
+        Set name
+    </h3>
+
+    <div class="modal-body">
+        <clr-input-container>
+            <input clrInput type="text" [(ngModel)]="name" placeholder="Name"/>
+        </clr-input-container>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="cancel()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="setName()">Set</button>
+    </div>
+</clr-modal>

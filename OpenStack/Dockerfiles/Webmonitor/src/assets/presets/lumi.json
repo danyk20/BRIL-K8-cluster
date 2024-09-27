@@ -1,0 +1,436 @@
+{
+    "timers": [9, 22],
+    "widgets": [{
+        "type": "numeric-field-with-ratios",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 550
+            },
+            "wrapper": {
+                "title": "Instantaneous luminosity (LS)",
+                "initialTimer": 1,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 7200000,
+                "aggregationThreshold": 43200000,
+                "aggregationAlgo": "avg",
+                "yAxisTitle": "[Hz/ub]",
+                "refreshSize": 200,
+                "tooltipInfo": [{
+                    "fieldname": "provider",
+                    "text": "PROVIDER"
+                }, {
+                    "fieldname": "runnum",
+                    "text": "RUN"
+                }, {
+                    "fieldname": "lsnum",
+                    "text": "LS"
+                }],
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "runnum",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fillnum",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "quickDateOptions": [{
+                    "unit": "hours", "duration": 3, "text": "Last 3 hours"
+                }, {
+                    "unit": "hours", "duration": 6, "text": "Last 6 hours"
+                }, {
+                    "unit": "hours", "duration": 12, "text": "Last 12 hours"
+                }, {
+                    "unit": "hours", "duration": 24, "text": "Last 24 hours"
+                }, {
+                    "unit": "days", "duration": 2, "text": "Last 2 days"
+                }],
+                "ratios": [{
+                    "numerator": {"source": 1, "field": 0},
+                    "denominator": {"source": 3, "field": 0}
+                }, {
+                    "numerator": {"source": 0, "field": 0},
+                    "denominator": {"source": 3, "field": 0}
+                }, {
+                    "numerator": {"source": 2, "field": 0},
+                    "denominator": {"source": 3, "field": 0}
+                }, {
+                    "numerator": {"source": 5, "field": 0},
+                    "denominator": {"source": 3, "field": 0}
+                }, {
+                    "numerator": {"source": 4, "field": 0},
+                    "denominator": {"source": 3, "field": 0}
+                }, {
+                    "numerator": {"source": 1, "field": 0},
+                    "denominator": {"source": 5, "field": 0}
+                }, {
+                    "numerator": {"source": 2, "field": 0},
+                    "denominator": {"source": 5, "field": 0}
+                }],
+                "sources": [{
+                    "index": "cmsos-data-bril-detluminosity",
+                    "timestampField": "timestamp",
+                    "fields": [{"name": "avg", "seriesName": "hfoc", "color": "#ed2d2e"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-hfoclumi-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-detluminosity",
+                    "timestampField": "timestamp",
+                    "fields": [{"name": "avg", "seriesName": "pltzero", "color": "#1859a9"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-pltlumizero-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-detluminosity",
+                    "timestampField": "timestamp",
+                    "fields": [{"name": "avg", "seriesName": "bcm1f", "color": "#008c47"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-bcm1flumi-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-detluminosity",
+                    "timestampField": "timestamp",
+                    "fields": [{"name": "avg", "seriesName": "hfet", "color": "#e700ff"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-hfetlumi-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-detluminosity",
+                    "timestampField": "timestamp",
+                    "fields": [{"name": "avg", "seriesName": "dt", "color": "#00ffff"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-dtlumi-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-detluminosity",
+                    "timestampField": "timestamp",
+                    "fields": [{"name": "avg", "seriesName": "bcm1futca", "color": "#310064"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "detectorname": "bcm1futcalumi"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-detluminosity",
+                    "timestampField": "timestamp",
+                    "fields": [{"name": "avg", "seriesName": "pltslink", "color": "#52FE00"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-pltslinklumi-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-bestlumi",
+                    "timestampField": "timestamp",
+                    "fields": [{
+                        "name": "avg",
+                        "seriesName": "Bestlumi",
+                        "color": "#ff9000",
+                        "lineWidth": 2
+                    }],
+                    "extraFields": [
+                        {"name": "runnum"}, {"name": "fillnum"},
+                        {"name": "lsnum"}, {"name": "provider"}
+                    ],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:9236-101-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 350
+            },
+            "wrapper": {
+                "title": "Instantaneous luminosity (NB4)",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 7200000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "yAxisTitle": "[Hz/ub]",
+                "refreshSize": 1800,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "runnum",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fillnum",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "quickDateOptions": [{
+                    "unit": "hours", "duration": 3, "text": "Last 3 hours"
+                }, {
+                    "unit": "hours", "duration": 6, "text": "Last 6 hours"
+                }, {
+                    "unit": "hours", "duration": 12, "text": "Last 12 hours"
+                }, {
+                    "unit": "hours", "duration": 24, "text": "Last 24 hours"
+                }, {
+                    "unit": "days", "duration": 2, "text": "Last 2 days"
+                }],
+                "sources": [{
+                    "index": "cmsos-data-bril-fastbestlumi",
+                    "fields": [{"name": "avg", "seriesName": "Bestlumi", "color": "#ff9000"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-fastdetluminosity",
+                    "fields": [{"name": "avg", "seriesName": "pltzero", "color": "#1859a9"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-pltlumizero-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-fastdetluminosity",
+                    "fields": [{"name": "avg", "seriesName": "hfet", "color": "#e700ff"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-hfetlumi-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-fastdetluminosity",
+                    "fields": [{"name": "avg", "seriesName": "hfoc", "color": "#ed2d2e"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-hfoclumi-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-fastdetluminosity",
+                    "fields": [{"name": "avg", "seriesName": "bcm1f", "color": "#008c47"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-bcm1flumi-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-fastdetluminosity",
+                    "fields": [{"name": "avg", "seriesName": "dt", "color": "#00ffff"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-dtlumi-101-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-fastdetluminosity",
+                    "fields": [{"name": "avg", "seriesName": "bcm1futca", "color": "#310064"}],
+                    "terms": {
+                        "detectorname": "bcm1futcalumi"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-fastdetluminosity",
+                    "fields": [{"name": "avg", "seriesName": "pltslink", "color": "#52FE00"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-pltslinklumi-101-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "fill-run-ls-query",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 70
+            },
+            "wrapper": {
+                "title": "RUN:LS query per bunch"
+            },
+            "widget": {
+                "channel": 2,
+                "fillEnabled": false,
+                "runEnabled": true,
+                "lsEnabled": true
+            }
+        }
+    }, {
+        "type": "array-snapshot",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 240
+            },
+            "wrapper": {
+                "title": "PLTZERO per bunch luminosity",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-detluminosity",
+                "runLsQueriesEnabled": true,
+                "runField": "runnum",
+                "lsField": "lsnum",
+                "queryChannel": 2,
+                "yAxisTitle": "[Hz/ub]",
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "left",
+                "timestampField": "timestamp",
+                "fields": [
+                    {"name": "bx", "seriesName": "pltlumizero"}
+                ],
+                "terms": {
+                    "flash_key": "@http://srv-s2d16-15-01.cms:6868-pltlumizero-101-"
+                }
+            }
+        }
+    }, {
+        "type": "array-snapshot",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 240
+            },
+            "wrapper": {
+                "title": "BCM1F per bunch luminosity",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-detluminosity",
+                "runLsQueriesEnabled": true,
+                "runField": "runnum",
+                "lsField": "lsnum",
+                "queryChannel": 2,
+                "yAxisTitle": "[Hz/ub]",
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "left",
+                "timestampField": "timestamp",
+                "fields": [
+                    {"name": "bx", "seriesName": "bcm1flumi"}
+                ],
+                "terms": {
+                    "flash_key": "@http://srv-s2d16-15-01.cms:6868-bcm1flumi-101-"
+                }
+            }
+        }
+    }, {
+        "type": "array-snapshot",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 240
+            },
+            "wrapper": {
+                "title": "HFET per bunch luminosity",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-detluminosity",
+                "runLsQueriesEnabled": true,
+                "runField": "runnum",
+                "lsField": "lsnum",
+                "queryChannel": 2,
+                "yAxisTitle": "[Hz/ub]",
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "left",
+                "timestampField": "timestamp",
+                "fields": [
+                    {"name": "bx", "seriesName": "hfetlumi"}
+                ],
+                "terms": {
+                    "flash_key": "@http://srv-s2d16-15-01.cms:6868-hfetlumi-101-"
+                }
+            }
+        }
+    }, {
+        "type": "array-snapshot",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 240
+            },
+            "wrapper": {
+                "title": "HFOC per bunch luminosity",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-detluminosity",
+                "runLsQueriesEnabled": true,
+                "runField": "runnum",
+                "lsField": "lsnum",
+                "queryChannel": 2,
+                "yAxisTitle": "[Hz/ub]",
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "left",
+                "timestampField": "timestamp",
+                "fields": [
+                    {"name": "bx", "seriesName": "hfoclumi"}
+                ],
+                "terms": {
+                    "flash_key": "@http://srv-s2d16-15-01.cms:6868-hfoclumi-101-"
+                }
+            }
+        }
+    }, {
+        "type": "array-snapshot",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 240
+            },
+            "wrapper": {
+                "title": "BCM1FUTCA per bunch luminosity",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-detluminosity",
+                "runLsQueriesEnabled": true,
+                "runField": "runnum",
+                "lsField": "lsnum",
+                "queryChannel": 2,
+                "yAxisTitle": "[Hz/ub]",
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "left",
+                "timestampField": "timestamp",
+                "fields": [
+                    {"name": "bx", "seriesName": "bcm1futca"}
+                ],
+                "terms": {
+                    "detectorname": "bcm1futcalumi"
+                }
+            }
+        }
+    }]
+}

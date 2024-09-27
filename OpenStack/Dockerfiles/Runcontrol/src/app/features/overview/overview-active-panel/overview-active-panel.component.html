@@ -1,0 +1,47 @@
+<div class="clr-row">
+    <div class="clr-col-lg-4 clr-col-md-6">
+        <h3>Active configurations</h3>
+    </div>
+    <div class="clr-col-lg-8 clr-col-md-6">
+        <form clrForm class="search" style="padding-top: 24px">
+            <clr-input-container>
+                <label>
+                    <clr-icon shape="filter"></clr-icon>
+                </label>
+                <input clrInput type="text" name="filterInput" [(ngModel)]="filter" placeholder="Filter">
+            </clr-input-container>
+        </form>
+    </div>
+</div>
+
+<div class="clr-row" style="display: flex; flex-wrap: wrap;">
+    <div *ngFor="let path of filteredActivePaths"
+         class="card bc-active-card"
+         [class.bc-card-danger-blink]="isStateError(states[path])">
+        <div class="card-header"
+             [class.bc-card-header-success]="isStateOK(states[path])"
+             [class.bc-card-header-danger]="isStateError(states[path])">
+            <clr-dropdown style="width: 100%" >
+                <span clrDropdownToggle style="width: 100%; white-space: normal">
+                    {{path}}
+                    <clr-icon shape="caret down" size="10"></clr-icon>
+                </span>
+                <clr-dropdown-menu [clrPosition]="'bottom-right'">
+                    <config-action-menu
+                        [state]="states[path]"
+                        [actionRequest]="actionRequests[path]"
+                        [path]="path"
+                        [configDetails]="configDetails[pathsWithVersion[path]]">
+                    </config-action-menu>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+        <div class="card-block">
+            <p class="card-text" *ngIf="pathsWithVersion[path] && configDetails[pathsWithVersion[path]]">
+                <b>Host</b>:&nbsp;{{configDetails[pathsWithVersion[path]].executive.host}}&nbsp;
+                <b>Port</b>:&nbsp;<code>{{configDetails[pathsWithVersion[path]].executive.port}}</code>
+                <config-fields [fields]="configDetails[pathsWithVersion[path]].fields"></config-fields>
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<div class="widget">
+
+    <div class="title" [hidden]="!config.title">
+        {{config.title}}
+        <span *ngFor="let label of labels" class="label title-label">{{label.text}}</span>
+    </div>
+
+    <div class="controls" *ngIf="config.controlsEnabled">
+        <div class="btn-group btn-sm">
+            <button [class]="timer ? (config.started ? 'btn btn-success' : 'btn btn-primary') : 'btn disabled'"
+                *ngIf="config.startEnabled"
+                (click)="onClickStart()">
+                <clr-icon [attr.shape]="(timer && config.started) ? 'stop' : 'play'"></clr-icon>
+                {{(timer && config.started) ? 'Stop' : 'Start'}}
+            </button>
+            <button class="btn"
+                *ngIf="config.refreshEnabled"
+                (click)="onClickRefresh()">
+                <clr-icon shape="refresh"></clr-icon>
+                Refresh
+            </button>
+            <button class="btn"
+                *ngIf="config.queriesEnabled"
+                [config.queries]="config.queriesOpen"
+                (click)="config.queriesOpen= !config.queriesOpen">
+                <clr-icon shape="search"></clr-icon>
+                Queries
+            </button>
+            <button class="btn"
+                *ngIf="config.optionsEnabled"
+                [config.queries]="config.optionsOpen"
+                (click)="config.optionsOpen= !config.optionsOpen">
+                <clr-icon shape="cog"></clr-icon>
+                Options
+            </button>
+        </div>
+    </div>
+
+    <div class="info" *ngIf="config.infoEnabled">
+        <span *ngIf="config.startEnabled">
+            timer: <code class="clr-code">{{timer ? timer.interval : '-'}}s</code>
+        </span>
+        <span *ngFor="let item of infoItems">
+            {{item[0]}}: <code class="clr-code">{{item[1]}}</code>
+        </span>
+    </div>
+
+    <div class="queries-wrapper">
+        <div class="queries" *ngIf="config.queriesEnabled" [hidden]="!config.queriesOpen">
+            <ng-content select=".widget-queries"></ng-content>
+            <wm-dynamic-query-form
+                *ngFor="let q of extraQueries"
+                [component]="q.component"
+                [config]="q.config"
+                (query)="extraQueriesEvents.next($event)">
+            </wm-dynamic-query-form>
+        </div>
+    </div>
+
+    <div class="content">
+        <ng-content select=".widget-content">
+        </ng-content>
+    </div>
+
+    <div class="logs" *ngIf="logs.length">
+        <clr-alert
+            *ngFor="let l of logs"
+            [clrAlertType]="l.level"
+            [clrAlertClosable]="false">
+            {{l.text}}
+        </clr-alert>
+    </div>
+
+    <clr-modal
+        [(clrModalOpen)]="config.optionsOpen"
+        *ngIf="config.optionsEnabled"
+        [clrModalSize]="'md'">
+        <h3 class="modal-title">Widget options</h3>
+        <div class="modal-body" style="height: 500px">
+            <clr-tabs>
+                <clr-tab>
+                    <button clrTabLink>General</button>
+                    <clr-tab-content>
+                        <wm-widget-general-settings
+                            [config]="config"
+                            [(timer)]="timer">
+                        </wm-widget-general-settings>
+                    </clr-tab-content>
+                </clr-tab>
+
+                <clr-tab>
+                    <button clrTabLink>Widget</button>
+                    <clr-tab-content>
+                        <ng-content select=".widget-options"></ng-content>
+                        <wm-dynamic-form
+                            [formFields]="extraOptions"
+                            [model]="extraOptionsModel"
+                            (modelChange)="extraOptionsModelChange.next($event)">
+                        </wm-dynamic-form>
+                    </clr-tab-content>
+                </clr-tab>
+            </clr-tabs>
+        </div>
+    </clr-modal>
+</div>

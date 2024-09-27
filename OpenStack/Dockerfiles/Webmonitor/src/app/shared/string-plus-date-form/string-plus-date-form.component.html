@@ -1,0 +1,25 @@
+<div clrForm class="inline-form">
+    <clr-input-container>
+        <label>{{label || key}}:</label>
+        <input clrInput type="text"
+               [(ngModel)]="textValue">
+    </clr-input-container>
+
+    <clr-input-container>
+        <label>Date:</label>
+<!--        <input clrInput type="text"-->
+<!--               [owlDateTimeTrigger]="dt" [owlDateTime]="dt"-->
+<!--               [(ngModel)]="dateValue">-->
+        <input clrInput type="text" [(ngModel)]="dateValue">
+<!--        <owl-date-time #dt></owl-date-time>-->
+    </clr-input-container>
+
+    <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox [(ngModel)]="utc"/>
+        <label>UTC</label>
+    </clr-checkbox-wrapper>
+
+    <button class="btn btn-primary" (click)="query()">
+        Query
+    </button>
+</div>

@@ -1,0 +1,65 @@
+{
+    "timers": [9],
+    "widgets": [{
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 460
+            },
+            "wrapper": {
+                "title": "Background",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 3600000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "max",
+                "yAxisTitle": "[Hz/cm2/e11]",
+                "yAxis2Enabled": true,
+                "yAxis2Title": "% of abort",
+                "refreshSize": 900,
+                "queryChannel": 1,
+                "fillQueriesEnabled": true,
+                "runQueriesEnabled": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "run",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fill",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "sources": [{
+                    "index": "cmsos-data-bril-brilsummary",
+                    "timestampField": "timestamp",
+                    "fillField": "fillnum",
+                    "runField": "runnum",
+                    "fields": [
+                        {"name": "bkgd1", "seriesName": "BKGD1 (bcm1f beam1 Hz/cm2/E11)"},
+                        {"name": "bkgd2", "seriesName": "BKGD2 (bcm1f beam2 Hz/cm2/E11)"},
+                        {"name": "bkgd3", "seriesName": "BKGD3 (bcml % of abort)", "yAxis": 2}
+                    ],
+                    "extraFields": [
+                        {"name": "runnum", "renameTo": "run"},
+                        {"name": "fillnum", "renameTo": "fill"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }]
+            }
+        }
+    }]
+}

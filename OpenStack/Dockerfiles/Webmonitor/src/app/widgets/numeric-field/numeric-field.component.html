@@ -1,0 +1,66 @@
+<wm-widget [config]="config.wrapper"
+    [info]="info"
+    (refresh)="onRefreshEvent()"
+    (start)="onStartEvent()"
+    (timer)="updateLive()"
+    #widgetWrapper>
+
+    <div class="widget-options">
+        <form clrForm *ngIf="config.widget.fieldChangeSeparators">
+            <clr-checkbox-container>
+                <label>Annotations</label>
+                <clr-checkbox-wrapper>
+                    <label>Enable Annotations</label>
+                    <input type="checkbox" clrCheckbox name="separatorsCheckbox"
+                        [(ngModel)]="config.widget.fieldChangeSeparators.enabled"
+                        (ngModelChange)="updateFieldSeparators(true)"/>
+                </clr-checkbox-wrapper>
+            </clr-checkbox-container>
+        </form>
+    </div>
+
+    <div class="widget-queries">
+        <div *ngIf="wi.quickDateOptions">
+            <wm-quick-date-form
+                [options]="wi.quickDateOptions"
+                (query)="queryDateRange($event)">
+            </wm-quick-date-form>
+        </div>
+
+        <wm-date-range-form (query)="queryDateRange($event)"></wm-date-range-form>
+
+        <wm-fill-run-ls-form
+            *ngIf="config.widget.fillQueriesEnabled"
+            [fillEnabled]="true" [runEnabled]="false" [lsEnabled]="false"
+            (query)="queryFillRun($event)">
+        </wm-fill-run-ls-form>
+
+        <wm-fill-run-ls-form
+            *ngIf="config.widget.runQueriesEnabled"
+            [fillEnabled]="false" [runEnabled]="true" [lsEnabled]="false"
+            (query)="queryFillRun($event)">
+        </wm-fill-run-ls-form>
+
+        <wm-range-form *ngFor="let rq of wi.rangeQueries"
+            [key]="rq.fieldname"
+            [label]="rq.label"
+            inputType="number"
+            [database]="wi.database"
+            [index]="wi.rangeRefresh.index"
+            [queryDetectors]="config.wrapper.queryDetectors"
+            [queryFits]="config.wrapper.queryFits"
+            (query)="queryRange($event)">
+        </wm-range-form>
+    </div>
+
+    <div *ngIf="!this.wi['ratios']" class="widget-content">
+        <div #plot style="height: 100%; width: 100%"></div>
+    </div>
+
+    <div *ngIf="this.wi['ratios']" class="widget-content">
+        <div #plot style="height: 55%; width: 100%;"></div>
+        <div class="h6 content-separator">Ratios</div>
+        <div #ratioPlot style="flex: 1 1 auto; width: 100%"></div>
+    </div>
+
+</wm-widget>

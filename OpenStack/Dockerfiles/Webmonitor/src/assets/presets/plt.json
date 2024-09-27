@@ -1,0 +1,127 @@
+{
+    "timers": [12],
+    "widgets": [{
+        "type": "time-query",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 60
+            },
+            "widget": {
+                "channel": 1
+            }
+        }
+    }, {
+        "type": "array-lines",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 400
+            },
+            "wrapper": {
+                "title": "PLT Coincidences M",
+                "started": true,
+                "controlsEnabled": true,
+                "queriesEnabled": true,
+                "startEnabled": true,
+                "infoEnabled": true,
+                "initialTimer": 0
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-pltprocessormon",
+                "field": "tot_hit_pertelescope",
+                "legend": "left",
+                "queryChannel": 1,
+                "liveWindow": 7200000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "refreshSize": 1000,
+                "series": [0, 1, 2, 3, 4, 5, 6, 7],
+                "legendNames": ["Ch0", "Ch1", "Ch2", "Ch3", "Ch4", "Ch5", "Ch6-Bad", "Ch7"],
+                "terms": {
+                    "detid": 1,
+                    "flash_key": "@http://vmepc-s2d16-06-01.cms:9203-1-11-"
+                }
+            }
+        }
+    }, {
+        "type": "array-lines",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 400
+            },
+            "wrapper": {
+                "title": "PLT Coincidences P",
+                "controlsEnabled": true,
+                "queriesEnabled": true,
+                "startEnabled": true,
+                "started": true,
+                "infoEnabled": true,
+                "initialTimer": 0
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-pltprocessormon",
+                "field": "tot_hit_pertelescope",
+                "legend": "left",
+                "queryChannel": 1,
+                "liveWindow": 7200000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "refreshSize": 1000,
+                "series": [8, 9, 10, 11, 12, 13, 14, 15],
+                "legendNames": ["Ch8-Bad", "Ch9-Bad", "Ch10", "Ch11", "Ch12", "Ch13", "Ch14", "Ch15"],
+                "terms": {
+                    "detid": 1,
+                    "flash_key": "@http://vmepc-s2d16-06-01.cms:9203-1-11-"
+                }
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 400
+            },
+            "wrapper": {
+                "title": "PLT Analog Current",
+                "infoEnabled": true,
+                "started": true,
+                "initialTimer": 0
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "yAxisTitle": "Current [A]",
+                "liveWindow": 7200000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "refreshSize": 1000,
+                "queryChannel": 1,
+                "sources": [{
+                    "index": "cmsos-data-bril-pltcurrents",
+                    "timestampField": "timestamp",
+                    "fields": [{
+                        "name": "PLT_HmF",
+                        "seriesName": "mZfar"
+                    }, {
+                        "name": "PLT_HmN",
+                        "seriesName": "mZnear"
+                    }, {
+                        "name": "PLT_HpF",
+                        "seriesName": "pZfar"
+                    }, {
+                        "name": "PLT_HpN",
+                        "seriesName": "pZnear"
+                    }],
+                    "terms": {
+                        "flash_key" : "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }]
+            }
+        }
+    }]
+}

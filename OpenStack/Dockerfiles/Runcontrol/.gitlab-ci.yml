@@ -1,0 +1,41 @@
+stages:
+    - build_arm
+    - build_x64
+
+variables:
+    OS: ALMA9
+
+before_script:
+    # Export environment variables from .env file
+    - |
+        if [ -f .env ]; then
+          export $(grep -v '^#' .env | xargs)
+        fi
+
+build_arm:
+    tags:
+        - k8s-arm
+    stage: build_arm
+    image:
+        name: gcr.io/kaniko-project/executor:v1.23.2-debug
+        entrypoint: [""]
+    script:
+        - /kaniko/executor
+            --context "${CI_PROJECT_DIR}"
+            --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+            --destination "${CI_REGISTRY_IMAGE}:${OS}_ARM_${VERSION}"
+            --build-arg ARCHITECTURE="aarch64"
+            --build-arg NODE_VERSION="${NODE_VERSION}"
+
+build_x64:
+    stage: build_x64
+    image:
+        name: gcr.io/kaniko-project/executor:v1.23.2-debug
+        entrypoint: [""]
+    script:
+        - /kaniko/executor
+            --context "${CI_PROJECT_DIR}"
+            --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+            --destination "${CI_REGISTRY_IMAGE}:${OS}_x86_${VERSION}"
+            --build-arg ARCHITECTURE="x86_64"
+            --build-arg NODE_VERSION="${NODE_VERSION}"

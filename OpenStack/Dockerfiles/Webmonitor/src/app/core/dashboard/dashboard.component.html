@@ -1,0 +1,53 @@
+<div class="dashboard-widget-container"
+    [dragula]="DRAGULA_WIDGETS_GROUP"
+    [(dragulaModel)]="widgets">
+
+    <clr-alert
+        *ngIf="!config"
+        [clrAlertClosable]="false"
+        [clrAlertType]="'alert-danger'">
+        <div clr-alert-item class="alert-item">
+            <span class="alert-text">
+                No dashboard preset configuration
+            </span>
+        </div>
+    </clr-alert>
+
+    <div *ngFor="let widget of widgets"
+         class="dashboard-widget"
+         [style.height]="widget.config.container.height ? widget.config.container.height + 'px' : ''"
+         [style.width]="widget.config.container.width + '%'">
+
+        <div class="layout-mode-curtain" *ngIf="layoutMode">
+            <div class="layout-mode-buttons">
+                <clr-icon
+                    id="widget-rearrange-handle" shape="target" size="36">
+                </clr-icon>
+
+                <clr-icon shape="resize" size="36"
+                          [popper]="resizeForm"
+                          [popperPlacement]="'right-start'"
+                          (popperOnShown)="onResizeFormShow($event)"
+                          [popperTrigger]="'click'"
+                          [popperHideOnScroll]="true"
+                          [popperHideOnMouseLeave]="true">
+                </clr-icon>
+            </div>
+
+        </div>
+
+
+        <wm-dynamic-widget
+            [type]="widget.type"
+            [config]="widget.config">
+        </wm-dynamic-widget>
+
+        <popper-content #resizeForm>
+            <dashboard-container-resize-form
+                [width]="widget.config.container.width"
+                [height]="widget.config.container.height"
+                (dimensionsChange)="resizeContainer($event, widget)">
+            </dashboard-container-resize-form>
+        </popper-content>
+    </div>
+</div>

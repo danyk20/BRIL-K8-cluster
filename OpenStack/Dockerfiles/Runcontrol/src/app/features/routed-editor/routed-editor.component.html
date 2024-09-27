@@ -1,0 +1,25 @@
+<clr-main-container>
+    <div class="content-container">
+        <div class="content-area">
+            <!-- header with back button -->
+            <a class="back-link" routerLink="/overview">
+                <clr-icon shape="arrow left" size="36"></clr-icon>
+                <span class="back-link-text">
+                    Back to<br/>
+                    overview
+                </span>
+            </a>
+            
+            <h2 class="header-text">
+                {{path}}
+                <!-- <span class="label label-info header-label"> -->
+                <!-- v{{selectedVersion}} -->
+                <!-- </span> -->
+            </h2>
+            <!-- end header -->
+
+            <bc-editor [path]="path"></bc-editor>
+
+        </div>
+    </div>
+</clr-main-container>

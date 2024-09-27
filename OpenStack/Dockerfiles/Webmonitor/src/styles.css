@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --cds-global-base: 20;
+}
+
+.owl-dt-container {
+    font-size: 14px !important;
+}
+
+.inline-form {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
+.inline-form > clr-input-container {
+    padding: 5px 0px 0px;
+    margin: 0;
+    width: 350px;
+}
+
+div.plotly-notifier {
+    visibility: hidden;
+}
+
+.js-plotly-plot .plotly .modebar {
+    z-index: 2 !important;
+}
+
+.clr-combobox-wrapper {
+    min-width: 13rem !important;
+    max-width: 13rem;
+}

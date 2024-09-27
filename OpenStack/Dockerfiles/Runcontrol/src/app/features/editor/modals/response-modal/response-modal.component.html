@@ -1,0 +1,33 @@
+<ng-container *ngIf="state">
+    <clr-modal [(clrModalOpen)]="state.isOpen" [clrModalClosable]="false">
+        <h3 class="modal-title" [class.bg-danger]="badStatus()">
+            {{state.title}}
+        </h3>
+
+        <div class="modal-body">
+            <div [hidden]="!state.showLoading" style="text-align: center">
+                <span class="spinner spinner-lg">
+                    Loading...
+                </span>
+            </div>
+            <div [hidden]="state.showLoading" >
+                Status text: <code>{{state.response ? state.response.statusText : ''}}</code><br />
+                Status code: <code>{{state.response ? state.response.status : ''}}</code><br />
+                Response:<br />
+                <pre style="height: 260px;"><code>{{
+state.response
+?
+(state.response._body ? state.response._body : state.response)
+:
+''
+}}
+                </code> </pre>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn" (click)="onClickClose()">
+                OK
+            </button>
+        </div>
+    </clr-modal>
+</ng-container>

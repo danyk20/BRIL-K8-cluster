@@ -1,0 +1,2494 @@
+{
+  "timers": [
+    6
+  ],
+  "widgets": [
+    {
+      "type": "range-query",
+      "config": {
+        "container": {
+          "width": 100,
+          "height": 150
+        },
+        "wrapper": {
+          "title": "Fill range query",
+          "startEnabled": true,
+          "started": false,
+          "refreshEnabled": true,
+          "optionsEnabled": true,
+          "optionsOpen": false,
+          "queriesEnabled": true,
+          "queriesOpen": false,
+          "queryDetectors": true,
+          "queryFits": true,
+          "initialTimer": null
+        },
+        "widget": {
+          "key": "fill",
+          "inputType": "number",
+          "channel": 1,
+          "database": "analysis_store",
+          "index": "vdmtest"
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "mean_x",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "yAxisTitle": "mm",
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "mean_x_avg",
+                  "seriesName": "pltlumizero"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "mean_x_avg",
+                  "seriesName": "bcm1flumi"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "mean_y",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "yAxisTitle": "mm",
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "mean_y_avg",
+                  "seriesName": "pltlumizero"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "mean_y_avg",
+                  "seriesName": "bcm1flumi"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "peak_x",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "yAxisTitle": "L/(N1*N2)",
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "peak_x_avg",
+                  "seriesName": "pltlumizero"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "peak_x_avg",
+                  "seriesName": "bcm1flumi"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "peak_y",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "yAxisTitle": "L/(N1*N2)",
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "peak_y_avg",
+                  "seriesName": "pltlumizero"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "peak_y_avg",
+                  "seriesName": "bcm1flumi"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "capsigma_x",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "yAxisTitle": "mm",
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "capsigma_x_avg",
+                  "seriesName": "pltlumizero"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "capsigma_x_avg",
+                  "seriesName": "bcm1flumi"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "capsigma_y",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "yAxisTitle": "mm",
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "capsigma_y_avg",
+                  "seriesName": "pltlumizero"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "capsigma_y_avg",
+                  "seriesName": "bcm1flumi"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "chi2_X",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "yAxisTitle": "chi2/ndof",
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "chi2_x_avg",
+                  "seriesName": "pltlumizero"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "chi2_x_avg",
+                  "seriesName": "bcm1flumi"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "chi2_Y",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "yAxisTitle": "chi2/ndof",
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "chi2_y_avg",
+                  "seriesName": "pltlumizero"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "chi2_y_avg",
+                  "seriesName": "bcm1flumi"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "sigmavis",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "yAxisTitle": "μb",
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "sigmavis_avg",
+                  "seriesName": "pltlumizero"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "sigmavis_avg",
+                  "seriesName": "bcm1flumi"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "SBIL",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "yAxisTitle": "Hz/μb",
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "sbil_avg",
+                  "seriesName": "pltlumizero"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "sbil_avg",
+                  "seriesName": "bcm1flumi"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "sigvis(6) lead bunches",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "efficiency_lead",
+                  "seriesName": "pltlumizero",
+                  "errorField": "efficiency_lead_err"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "efficiency_lead",
+                  "seriesName": "bcm1flumi",
+                  "errorField": "efficiency_lead_err"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "Linearity lead bunches",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "linearity_lead",
+                  "seriesName": "pltlumizero",
+                  "errorField": "linearity_lead_err"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "linearity_lead",
+                  "seriesName": "bcm1flumi",
+                  "errorField": "linearity_lead_err"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "sigvis(6) train bunches",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "efficiency_train",
+                  "seriesName": "pltlumizero",
+                  "errorField": "efficiency_train_err"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "efficiency_train",
+                  "seriesName": "bcm1flumi",
+                  "errorField": "efficiency_train_err"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "Linearity train bunches",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "crossing_angle",
+              "text": "cross.angle"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "linearity_train",
+                  "seriesName": "pltlumizero",
+                  "errorField": "linearity_train_err"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "linearity_train",
+                  "seriesName": "bcm1flumi",
+                  "errorField": "linearity_train_err"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "crossing_angle"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "numeric-field",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": true,
+          "queryDetectors": true,
+          "queryFits": true,
+          "title": "Crossing angle",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "timestampUNIX": true,
+          "tooltipInfo": [
+            {
+              "fieldname": "fill",
+              "text": "Fill"
+            },
+            {
+              "fieldname": "fit",
+              "text": "Fit"
+            }
+          ],
+          "queryChannel": 1,
+          "rangeRefresh": {
+            "enabled": true,
+            "index": "vdmtest",
+
+            "field": "fill",
+            "range": 30
+          },
+          "forceMarkers": true,
+          "fieldChangeSeparators": {
+            "enabled": true,
+            "fields": [
+              {
+                "lineColor": "darkmagenta",
+                "lineDash": "dash",
+                "lineWidth": 1,
+                "text": "FILL ",
+                "fieldname": "fill"
+              }
+            ]
+          },
+          "rangeQueries": [
+            {
+              "fieldname": "fill"
+            }
+          ],
+          "sources": [
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "crossing_angle",
+                  "seriesName": "pltlumizero"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "pltlumizero"
+              },
+              "timestampField": "timestamp"
+            },
+            {
+              "index": "vdmtest",
+
+              "fields": [
+                {
+                  "name": "crossing_angle",
+                  "seriesName": "bcm1flumi"
+                }
+              ],
+              "extraFields": [
+                {
+                  "name": "fill"
+                },
+                {
+                  "name": "fit"
+                }
+              ],
+              "terms": {
+                "detector": "bcm1flumi"
+              },
+              "timestampField": "timestamp"
+            }
+          ],
+          "refreshSize": 100,
+          "liveWindow": 600000,
+          "quickDateOptions": [
+            {
+              "unit": "hours",
+              "duration": 2,
+              "text": "Last 2 hours"
+            },
+            {
+              "unit": "hours",
+              "duration": 6,
+              "text": "Last 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "string-plus-date-query",
+      "config": {
+        "container": {
+          "width": 100,
+          "height": 71
+        },
+        "wrapper": {
+          "title": "VDM per bunch detector+date query",
+          "startEnabled": true,
+          "started": false,
+          "refreshEnabled": true,
+          "optionsEnabled": true,
+          "optionsOpen": false,
+          "queriesEnabled": true,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "channel": 2,
+          "label": "Detector"
+        }
+      }
+    },
+    {
+      "type": "vdm-bx",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": false,
+          "title": "Mean X per bunch",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "index": "vdmtest",
+
+          "timestampUNIX": true,
+          "chartType": "scattergl",
+          "queryChannel": 2,
+          "yAxisTitle": "mm",
+          "xAxisTitle": "Bunch index",
+          "xOffset": 1,
+          "legend": "horizontal",
+          "timestampField": "timestamp",
+          "detectorField": "detector",
+          "fields": [
+            {
+              "name": "mean_x_bx",
+              "seriesName": "mean_x",
+              "error": "mean_x_bx_err"
+            }
+          ],
+          "detectorFieldCase": "lowcase"
+        }
+      }
+    },
+    {
+      "type": "vdm-bx",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": false,
+          "title": "Mean Y per bunch",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "index": "vdmtest",
+
+          "timestampUNIX": true,
+          "chartType": "scattergl",
+          "queryChannel": 2,
+          "yAxisTitle": "mm",
+          "xAxisTitle": "Bunch index",
+          "xOffset": 1,
+          "legend": "horizontal",
+          "timestampField": "timestamp",
+          "detectorField": "detector",
+          "fields": [
+            {
+              "name": "mean_y_bx",
+              "seriesName": "mean_y",
+              "error": "mean_y_bx_err"
+            }
+          ],
+          "detectorFieldCase": "lowcase"
+        }
+      }
+    },
+    {
+      "type": "vdm-bx",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": false,
+          "title": "Peak X per bunch",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "index": "vdmtest",
+
+          "timestampUNIX": true,
+          "chartType": "scattergl",
+          "queryChannel": 2,
+          "yAxisTitle": "L/(N1*N2)",
+          "xAxisTitle": "Bunch index",
+          "xOffset": 1,
+          "legend": "horizontal",
+          "timestampField": "timestamp",
+          "detectorField": "detector",
+          "fields": [
+            {
+              "name": "peak_x_bx",
+              "seriesName": "peak_x",
+              "error": "peak_x_bx_err"
+            }
+          ],
+          "detectorFieldCase": "lowcase"
+        }
+      }
+    },
+    {
+      "type": "vdm-bx",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": false,
+          "title": "Peak Y per bunch",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "index": "vdmtest",
+
+          "timestampUNIX": true,
+          "chartType": "scattergl",
+          "queryChannel": 2,
+          "yAxisTitle": "L/(N1*N2)",
+          "xAxisTitle": "Bunch index",
+          "xOffset": 1,
+          "legend": "horizontal",
+          "timestampField": "timestamp",
+          "detectorField": "detector",
+          "fields": [
+            {
+              "name": "peak_y_bx",
+              "seriesName": "peak_y",
+              "error": "peak_y_bx_err"
+            }
+          ],
+          "detectorFieldCase": "lowcase"
+        }
+      }
+    },
+    {
+      "type": "vdm-bx",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": false,
+          "title": "Capsigma X per bunch",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "index": "vdmtest",
+
+          "timestampUNIX": true,
+          "chartType": "scattergl",
+          "queryChannel": 2,
+          "yAxisTitle": "mm",
+          "xAxisTitle": "Bunch index",
+          "xOffset": 1,
+          "legend": "horizontal",
+          "timestampField": "timestamp",
+          "detectorField": "detector",
+          "fields": [
+            {
+              "name": "capsigma_x_bx",
+              "seriesName": "capsigma_x",
+              "error": "capsigma_x_bx_err"
+            }
+          ],
+          "detectorFieldCase": "lowcase"
+        }
+      }
+    },
+    {
+      "type": "vdm-bx",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": false,
+          "title": "Capsigma Y per bunch",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "index": "vdmtest",
+
+          "timestampUNIX": true,
+          "chartType": "scattergl",
+          "queryChannel": 2,
+          "yAxisTitle": "mm",
+          "xAxisTitle": "Bunch index",
+          "xOffset": 1,
+          "legend": "horizontal",
+          "timestampField": "timestamp",
+          "detectorField": "detector",
+          "fields": [
+            {
+              "name": "capsigma_y_bx",
+              "seriesName": "capsigma_y",
+              "error": "capsigma_y_bx_err"
+            }
+          ],
+          "detectorFieldCase": "lowcase"
+        }
+      }
+    },
+    {
+      "type": "vdm-bx",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": false,
+          "title": "chi2 X per bunch",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "index": "vdmtest",
+
+          "timestampUNIX": true,
+          "chartType": "scattergl",
+          "queryChannel": 2,
+          "yAxisTitle": "chi2/ndof",
+          "xAxisTitle": "Bunch index",
+          "xOffset": 1,
+          "legend": "horizontal",
+          "timestampField": "timestamp",
+          "detectorField": "detector",
+          "fields": [
+            {
+              "name": "chi2_x_bx",
+              "seriesName": "chi2_X",
+              "error": "chi2_x_bx_err"
+            }
+          ],
+          "detectorFieldCase": "lowcase"
+        }
+      }
+    },
+    {
+      "type": "vdm-bx",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": false,
+          "title": "chi2 Y per bunch",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "index": "vdmtest",
+
+          "timestampUNIX": true,
+          "chartType": "scattergl",
+          "queryChannel": 2,
+          "yAxisTitle": "chi2/ndof",
+          "xAxisTitle": "Bunch index",
+          "xOffset": 1,
+          "legend": "horizontal",
+          "timestampField": "timestamp",
+          "detectorField": "detector",
+          "fields": [
+            {
+              "name": "chi2_y_bx",
+              "seriesName": "chi2_Y",
+              "error": "chi2_y_bx_err"
+            }
+          ],
+          "detectorFieldCase": "lowcase"
+        }
+      }
+    },
+    {
+      "type": "vdm-bx",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": false,
+          "title": "Sigmavis per bunch",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "index": "vdmtest",
+
+          "timestampUNIX": true,
+          "chartType": "scattergl",
+          "queryChannel": 2,
+          "yAxisTitle": "μb",
+          "xAxisTitle": "Bunch index",
+          "xOffset": 1,
+          "legend": "horizontal",
+          "timestampField": "timestamp",
+          "detectorField": "detector",
+          "fields": [
+            {
+              "name": "sigmavis_bx",
+              "seriesName": "sigmavis",
+              "error": "sigmavis_bx_err"
+            }
+          ],
+          "detectorFieldCase": "lowcase"
+        }
+      }
+    },
+    {
+      "type": "vdm-bx",
+      "config": {
+        "container": {
+          "width": 50,
+          "height": 320
+        },
+        "wrapper": {
+          "controlsEnabled": true,
+          "optionsEnabled": true,
+          "queriesEnabled": true,
+          "startEnabled": false,
+          "refreshEnabled": false,
+          "title": "SBIL per bunch",
+          "started": false,
+          "optionsOpen": false,
+          "queriesOpen": false,
+          "initialTimer": null
+        },
+        "widget": {
+          "database": "analysis_store",
+          "index": "vdmtest",
+
+          "timestampUNIX": true,
+          "chartType": "scattergl",
+          "queryChannel": 2,
+          "yAxisTitle": "Hz/μb",
+          "xAxisTitle": "Bunch index",
+          "xOffset": 1,
+          "legend": "horizontal",
+          "timestampField": "timestamp",
+          "detectorField": "detector",
+          "fields": [
+            {
+              "name": "sbil_bx",
+              "seriesName": "sbil",
+              "error": "sbil_bx_err"
+            }
+          ],
+          "detectorFieldCase": "lowcase"
+        }
+      }
+    }
+  ]
+}
+

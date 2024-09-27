@@ -1,0 +1,366 @@
+{
+    "timers": [9, 22],
+    "widgets": [{
+        "type": "numeric-field-with-ratios",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 550
+            },
+            "wrapper": {
+                "title": "Instantaneous luminosity (LS)",
+                "initialTimer": 1,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 7200000,
+                "aggregationThreshold": 43200000,
+                "aggregationAlgo": "avg",
+                "yAxisTitle": "[Hz/ub]",
+                "refreshSize": 200,
+                "tooltipInfo": [{
+                    "fieldname": "provider",
+                    "text": "PROVIDER"
+                }, {
+                    "fieldname": "runnum",
+                    "text": "RUN"
+                }, {
+                    "fieldname": "lsnum",
+                    "text": "LS"
+                }],
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "runnum",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fillnum",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "quickDateOptions": [{
+                    "unit": "hours", "duration": 3, "text": "Last 3 hours"
+                }, {
+                    "unit": "hours", "duration": 6, "text": "Last 6 hours"
+                }, {
+                    "unit": "hours", "duration": 12, "text": "Last 12 hours"
+                }, {
+                    "unit": "hours", "duration": 24, "text": "Last 24 hours"
+                }, {
+                    "unit": "days", "duration": 2, "text": "Last 2 days"
+                }],
+                "ratios": [{
+                    "numerator": {"source": 1, "field": 0},
+                    "denominator": {"source": 0, "field": 0}
+                }, {
+                    "numerator": {"source": 2, "field": 0},
+                    "denominator": {"source": 0, "field": 0}
+                }, {
+                    "numerator": {"source": 2, "field": 0},
+                    "denominator": {"source": 1, "field": 0}
+                }],
+                "sources": [{
+                    "index": "cmsos-data-bril-detluminosity",
+                    "timestampField": "timestamp",
+                    "fields": [{"name": "avg", "seriesName": "bcm1futca", "color": "#310064"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "detectorname": "bcm1futcalumi"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-detluminosity",
+                    "timestampField": "timestamp",
+                    "fields": [{"name": "avg", "seriesName": "bcm1futca-lumi-100", "color": "#ff9000"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "detectorname": "bcm1futca_lumi_100"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-detluminosity",
+                    "timestampField": "timestamp",
+                    "fields": [{"name": "avg", "seriesName": "bcm1futca-lumi-101", "color": "#310064"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "detectorname": "bcm1futca_lumi_101"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-detluminosity",
+                    "timestampField": "timestamp",
+                    "fields": [{"name": "avg", "seriesName": "bcm1f-rhu", "color": "#008c47"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-bcm1flumi-101-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 350
+            },
+            "wrapper": {
+                "title": "Instantaneous luminosity (NB4)",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 7200000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "yAxisTitle": "[Hz/ub]",
+                "refreshSize": 1800,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "runnum",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fillnum",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "quickDateOptions": [{
+                    "unit": "hours", "duration": 3, "text": "Last 3 hours"
+                }, {
+                    "unit": "hours", "duration": 6, "text": "Last 6 hours"
+                }, {
+                    "unit": "hours", "duration": 12, "text": "Last 12 hours"
+                }, {
+                    "unit": "hours", "duration": 24, "text": "Last 24 hours"
+                }, {
+                    "unit": "days", "duration": 2, "text": "Last 2 days"
+                }],
+                "sources": [{
+                    "index": "cmsos-data-bril-fastdetluminosity",
+                    "fields": [{"name": "avg", "seriesName": "bcm1futca", "color": "#310064"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "detectorname": "bcm1futcalumi"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-fastdetluminosity",
+                    "fields": [{"name": "avg", "seriesName": "bcm1futca-lumi-100", "color": "#310064"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "detectorname": "bcm1futca_lumi_100"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-fastdetluminosity",
+                    "fields": [{"name": "avg", "seriesName": "bcm1futca-lumi-101", "color": "#52FE00"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "detectorname": "bcm1futca_lumi_101"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-fastdetluminosity",
+                    "fields": [{"name": "avg", "seriesName": "bcm1f-rhu", "color": "#008c47"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}, {"name": "lsnum"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-15-01.cms:6868-bcm1flumi-101-"
+                    }
+                }]
+            }
+        }
+    }, 
+    {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 460
+            },
+            "wrapper": {
+                "title": "Background",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 3600000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "max",
+                "yAxisTitle": "[Hz/cm2/e11]",
+                "yAxis2Enabled": true,
+                "yAxis2Title": "% of abort",
+                "refreshSize": 900,
+                "queryChannel": 1,
+                "fillQueriesEnabled": true,
+                "runQueriesEnabled": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "fill",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "sources": [{
+                    "index": "cmsos-data-bril-brilsummary",
+                    "timestampField": "timestamp",
+                    "fillField": "fillnum",
+                    "fields": [
+                        {"name": "bkgd1", "seriesName": "BKGD1 (bcm1f beam1 Hz/cm2/E11)"},
+                        {"name": "bkgd2", "seriesName": "BKGD2 (bcm1f beam2 Hz/cm2/E11)"}
+                    ],
+                    "extraFields": [
+                        {"name": "fillnum", "renameTo": "fill"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }, {
+                    "index": "cmsos-data-bril-bcm1futcaprocessormon",
+                    "timestampField": "timestamp",
+                    "fillField": "fill",
+                    "fields": [
+                        {"name": "background1", "seriesName": "BKGD1 (bcm1futca beam1 Hz/cm2/E11)"},
+                        {"name": "background2", "seriesName": "BKGD2 (bcm1futca beam2 Hz/cm2/E11)"}
+                    ],
+                    "extraFields": [
+                        {"name": "fill", "renameTo": "fill"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-16-01.cms:9015-121-"
+                    }
+                }]
+            }
+        }
+    },   
+    {
+        "type": "fill-run-ls-query",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 70
+            },
+            "wrapper": {
+                "title": "RUN:LS query per bunch"
+            },
+            "widget": {
+                "channel": 2,
+                "fillEnabled": false,
+                "runEnabled": true,
+                "lsEnabled": true
+            }
+        }
+    }, {
+        "type": "array-snapshot",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 240
+            },
+            "wrapper": {
+                "title": "BCM1FUTCA per bunch luminosity",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-detluminosity",
+                "runLsQueriesEnabled": true,
+                "runField": "runnum",
+                "lsField": "lsnum",
+                "queryChannel": 2,
+                "yAxisTitle": "[Hz/ub]",
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "left",
+                "timestampField": "timestamp",
+                "fields": [
+                    {"name": "bx", "seriesName": "bcm1futca"}
+                ],
+                "terms": {
+                    "detectorname": "bcm1futcalumi"
+                }
+            }
+        }
+    }, {
+        "type": "array-snapshot",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 300
+            },
+            "wrapper": {
+                "title": "bcm1futca-100 per bunch luminosity",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-detluminosity",
+                "runLsQueriesEnabled": true,
+                "runField": "runnum",
+                "lsField": "lsnum",
+                "queryChannel": 2,
+                "yAxisTitle": "[Hz/ub]",
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "left",
+                "timestampField": "timestamp",
+                "fields": [
+                    {"name": "bx", "seriesName": "bcm1futca_lumi_100"}
+                ],
+                "terms": {
+                    "detectorname": "bcm1futca_lumi_100"
+                }
+            }
+        }
+    }, {
+        "type": "array-snapshot",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 300
+            },
+            "wrapper": {
+                "title": "bcm1futca-101 per bunch luminosity",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-detluminosity",
+                "runLsQueriesEnabled": true,
+                "runField": "runnum",
+                "lsField": "lsnum",
+                "queryChannel": 2,
+                "yAxisTitle": "[Hz/ub]",
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "legend": "left",
+                "timestampField": "timestamp",
+                "fields": [
+                    {"name": "bx", "seriesName": "bcm1futca-101"}
+                ],
+                "terms": {
+                    "detectorname": "bcm1futca_lumi_101"
+                }
+            }
+        }
+    }]
+}

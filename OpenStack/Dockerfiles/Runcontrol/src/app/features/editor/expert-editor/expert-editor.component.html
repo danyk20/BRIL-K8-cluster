@@ -1,0 +1,34 @@
+<executive-form
+    #executiveForm
+    [executive]="configDetails ? configDetails.executive : null">
+</executive-form>
+
+<div #editorContainer class="editor"> </div>
+
+<clr-checkbox-wrapper>
+    <label>VIM bindings</label>
+    <input
+        type="checkbox"
+        clrCheckbox
+        name="vimBindingsCheckbox"
+        style="display: inline-block; margin-right: 1em;"
+        [ngModel]="vimKeybindings"
+        (ngModelChange)="toggleBindings()" />
+</clr-checkbox-wrapper>
+
+<button class="btn" (click)="beautifyXML()">
+    Beautify
+</button>
+
+<button
+    class="btn"
+    (click)="preview.emit({xml: editor.getValue(), executive: executiveForm.getValue()})">
+    Preview final XML
+</button>
+
+<button
+    class="btn btn-primary"
+    style="float: right"
+    (click)="submit.emit({xml: editor.getValue(), executive: executiveForm.getValue()})">
+    Submit as new version
+</button>

@@ -1,0 +1,33 @@
+<div clrForm class="inline-form">
+    <clr-input-container>
+        <label>Min {{label || key}}:</label>
+        <input clrInput [type]="inputType"
+               [(ngModel)]="minValue">
+    </clr-input-container>
+
+    <clr-input-container>
+        <label>Max {{label || key}}:</label>
+        <input clrInput [type]="inputType"
+               [(ngModel)]="maxValue">
+    </clr-input-container>
+
+    <wm-detector-form
+      *ngIf="queryDetectors"
+      [database]="database"
+      [index]="index"
+      (onChange) = "changeDetectors($event)"
+    >
+    </wm-detector-form>
+
+    <wm-fit-form
+      *ngIf="queryFits"
+      [database]="database"
+      [index]="index"
+      (onChange) = "changeFits($event)"
+    >
+    </wm-fit-form>
+    
+    <button class="btn btn-primary" (click)="query()">
+        Query
+    </button>
+</div>

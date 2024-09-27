@@ -1,0 +1,25 @@
+<executive-form
+    [disabled]="true"
+    [executive]="configDetails ? configDetails.executive : undefined">
+</executive-form>
+
+<ng-container *ngIf="configDetails && configDetails.fields === 'ERROR'; else fieldsEditorContainer">
+    <h3 class="text-warning">
+        Unable to parse configuration fields. Use expert mode editor
+    </h3>
+</ng-container>
+
+<ng-template #fieldsEditorContainer>
+    <fields-editor #fieldsEditor
+        [fields]="configDetails ? configDetails.fields : undefined">
+    </fields-editor>
+
+    <button class="btn btn-info" (click)="preview.emit(fieldsEditor.getValue())">
+        Preview modifications
+    </button>
+
+    <button class="btn btn-primary" (click)="submit.emit(fieldsEditor.getValue())"
+            style="float: right">
+        Submit as new version
+    </button>
+</ng-template>

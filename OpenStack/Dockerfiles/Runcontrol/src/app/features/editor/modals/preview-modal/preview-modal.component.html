@@ -1,0 +1,17 @@
+<ng-container *ngIf="state">
+    <clr-modal
+        #modal
+        [clrModalOpen]="state.isOpen"
+        [clrModalClosable]="false"
+        [clrModalSize]="'xl'">
+        <h3 class="modal-title">Preview XML</h3>
+        <div class="modal-body">
+            <div #editorContainer style="height: 460px; border: 1px solid grey;"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn" (click)="onClickClose()">
+                Cancel
+            </button>
+        </div>
+    </clr-modal>
+</ng-container>

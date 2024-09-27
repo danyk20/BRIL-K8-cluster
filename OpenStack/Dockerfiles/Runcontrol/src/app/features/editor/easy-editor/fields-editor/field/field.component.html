@@ -1,0 +1,196 @@
+<h6>
+    {{field.name}}:
+    <clr-tooltip *ngIf="field.multiple">
+        <clr-icon class="is-warning" shape="copy" clrTooltipTrigger></clr-icon>
+        <clr-tooltip-content *clrIfOpen [clrSize]="'lg'" [clrPosition]="'top-right'">
+            This field modifies multiple values in configuration xml
+        </clr-tooltip-content>
+    </clr-tooltip>
+
+
+    <!-- <clr-signpost *ngIf="field.typeahead || field.help"> -->
+    <clr-signpost *ngIf="field.help">
+        <clr-signpost-content *clrIfOpen="helpPostIsOpen">
+            <div *ngIf="field.help">
+                {{field.help}}
+            </div>
+            <!-- <div *ngIf="field.typeahead"> -->
+            <!-- <span class="text-info">Typeahead:</span> -->
+            <!-- <span *ngFor="let t of field.typeahead"><br/>{{t}}</span> -->
+            <!-- </div> -->
+        </clr-signpost-content>
+    </clr-signpost>
+</h6>
+<div [ngSwitch]="field.type">
+    <ng-container *ngSwitchCase="'string'">
+        <clr-input-container>
+            <input clrInput class="clr-col-lg-12" type="text" [(ngModel)]="field.value" />
+        </clr-input-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'integer'">
+        <clr-input-container>
+            <input clrInput type="number" [(ngModel)]="field.value" />
+        </clr-input-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'unsignedInt'">
+        <clr-input-container>
+            <input clrInput type="number" min="0" [(ngModel)]="field.value" />
+        </clr-input-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'float'">
+        <clr-input-container>
+            <input clrInput type="number" step="0.1" [(ngModel)]="field.value" />
+        </clr-input-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'commaSeparatedString'">
+        <ng-container *ngTemplateOutlet="commaSeparatedString"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'stringArray'">
+        <ng-container *ngTemplateOutlet="stringArray"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'stringMap'">
+        <ng-container *ngTemplateOutlet="stringMap"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'bool'">
+        <clr-checkbox-wrapper>
+            <label>{{field.name}} ({{field.value}})</label>
+            <input clrCheckbox type="checkbox" [(ngModel)]="field.value" />
+        </clr-checkbox-wrapper>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+        <clr-input-container>
+            <input clrInput type="text" [(ngModel)]="field.value" />
+        </clr-input-container>
+    </ng-container>
+</div>
+
+<ng-template #commaSeparatedString>
+    <table class="table table-compact">
+        <thead><tr><th>Index</th><th>Value</th><th>Actions</th></tr></thead>
+        <tr *ngFor="let val of field.value; let index = index">
+            <td>{{index}}</td>
+            <td>"{{val}}"</td>
+            <td>
+                <ng-container
+                    *ngTemplateOutlet="stringListButtons; context: {$implicit: index}">
+                </ng-container>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <clr-input-container>
+                    <input clrInput class="clr-col-lg-12" type="text" [(ngModel)]="newStringItemValue" placeholder="New value"/>
+                </clr-input-container>
+            </td>
+            <td>
+                <ng-container *ngTemplateOutlet="stringListAddButton"></ng-container>
+            </td>
+        </tr>
+    </table>
+</ng-template>
+
+<ng-template #stringArray>
+    <table class="table table-compact">
+        <thead><tr><th>Index</th><th>Tag</th><th>Value</th><th>Actions</th></tr></thead>
+        <tr *ngFor="let val of field.value; let index = index">
+            <td>{{index}}</td>
+            <td>"{{val[0]}}"</td>
+            <td>"{{val[1]}}"</td>
+            <td>
+                <ng-container
+                    *ngTemplateOutlet="stringListButtons; context: {$implicit: index}">
+                </ng-container>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <clr-input-container>
+                    <input clrInput class="clr-col-lg-12" type="text" [(ngModel)]="newStringItemKey" placeholder="Tag"/>
+                </clr-input-container>
+            </td>
+            <td>
+                <clr-input-container>
+                    <input clrInput class="clr-col-lg-12" type="text" [(ngModel)]="newStringItemValue" placeholder="New value"/>
+                </clr-input-container>
+            </td>
+            <td>
+                <ng-container *ngTemplateOutlet="stringListAddButton"></ng-container>
+            </td>
+        </tr>
+    </table>
+</ng-template>
+
+<ng-template #stringMap>
+    <table class="table table-compact">
+        <thead><tr><th>Key</th><th>Value</th><th>Actions</th></tr></thead>
+        <tr *ngFor="let key of ObjectKeys(field.value)">
+            <td>"{{key}}"</td>
+            <td>
+                <clr-input-container>
+                    <input clrInput class="clr-col-lg-12" type="text" [(ngModel)]="field.value[key]"/>
+                </clr-input-container>
+            </td>
+            <td>
+                <ng-container
+                    *ngTemplateOutlet="stringListRemoveButton; context: {$implicit: key}">
+                </ng-container>
+            </td>
+        </tr>
+        <tr>
+          <td>
+              <clr-input-container>
+                  <input clrInput class="clr-col-lg-12" type="text" [(ngModel)]="newStringItemKey" placeholder="New Key"/>
+              </clr-input-container>
+          </td>
+          <td>
+              <clr-input-container>
+                  <input clrInput class="clr-col-lg-12" type="text" [(ngModel)]="newStringItemValue" placeholder="New value"/>
+              </clr-input-container>
+          </td>
+            <td>
+                <ng-container *ngTemplateOutlet="stringListAddButton"></ng-container>
+            </td>
+        </tr>
+    </table>
+</ng-template>
+
+<ng-template #stringListButtons let-index >
+    <div class="btn-group btn-link btn-icon-link btn-sm">
+        <button class="btn" (click)="stringItemMoveUp(index)"
+                [disabled]="index === 0">
+            <clr-icon shape="arrow up"></clr-icon>
+            <span class="clr-icon-title">Move up</span>
+        </button>
+
+        <button class="btn" (click)="stringItemMoveDown(index)"
+                [disabled]="index === field.value.length -1">
+            <clr-icon shape="arrow down"></clr-icon>
+            <span class="clr-icon-title">Move down</span>
+        </button>
+
+        <button class="btn" (click)="stringItemRemove(index)">
+            <clr-icon shape="trash"></clr-icon>
+            <span class="clr-icon-title">Remove</span>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #stringListAddButton>
+    <div class="btn-group btn-link btn-icon-link btn-sm">
+        <button class="btn" (click)="stringItemAdd()">
+            <clr-icon shape="add"></clr-icon>
+            <span class="clr-icon-title">Add</span>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #stringListRemoveButton let-key >
+    <div class="btn-group btn-link btn-icon-link btn-sm">
+        <button class="btn" (click)="stringItemRemove(key)">
+            <clr-icon shape="trash"></clr-icon>
+            <span class="clr-icon-title">Remove</span>
+        </button>
+    </div>
+</ng-template>

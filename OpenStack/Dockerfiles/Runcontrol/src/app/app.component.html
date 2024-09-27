@@ -1,0 +1,10 @@
+<app-alerts
+    [alerts]="alerts$ | async"
+    (processAlert)="handleAlert($event)">
+</app-alerts>
+
+<app-modals></app-modals>
+
+<div class="content-container">
+    <router-outlet></router-outlet>
+</div>

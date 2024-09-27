@@ -1,0 +1,10 @@
+<wm-dynamic-form
+    [formFields]="fields"
+    [(model)]="model"
+    (modelChange)="onModelChange($event)" >
+</wm-dynamic-form>
+
+<wm-quick-date-form
+    [options]="quickDateFormOptions"
+    (query)="onQuickDateQuery($event)">
+</wm-quick-date-form>

@@ -1,0 +1,18 @@
+<div class="form">
+    <section clrForm class="form-block">
+        <clr-input-container>
+            <label>Title</label>
+            <input clrInput type="text" [(ngModel)]="config.title" />
+        </clr-input-container>
+
+        <clr-select-container>
+            <label>Timer</label>
+            <select clrSelect [(ngModel)]="selectedTimer" [disabled]="!config.startEnabled">
+                <option [ngValue]="undefined"></option>
+                <option *ngFor="let timer of timers; let i = index" [ngValue]="timer">
+                    {{i}}: {{timer.interval}} seconds
+                </option>
+            </select>
+        </clr-select-container>
+    </section>
+</div>

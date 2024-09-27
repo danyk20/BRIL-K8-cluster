@@ -1,0 +1,120 @@
+<header class="header-2 bc-header">
+    <div class="branding">
+        <a href="#" class="nav-link">
+            <span class="title">BRILDAQ controls</span>
+        </a>
+    </div>
+
+    <!-- <div class="bc-header-item hidden-md-up"> -->
+    <!-- <button class="btn btn-inverse" (click)="toggleNavItemsOnSmall()"> -->
+    <!-- <clr-icon shape="menu"></clr-icon> -->
+    <!-- </button> -->
+    <!-- </div> -->
+
+    <div class="header-actions bc-header-actions-left">
+        <clr-dropdown>
+            <button class="nav-text" clrDropdownTrigger>
+                {{selectedUser}}
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu [clrPosition]="'bottom-left'" *clrIfOpen>
+                <button clrDropdownItem
+                        *ngFor="let item of users"
+                        (click)="selectUser(item)">
+                    {{item}}
+                </button>
+            </clr-dropdown-menu>
+        </clr-dropdown>
+
+
+        <div class="bc-header-item">
+            <button class="btn btn-inverse" (click)="onRefreshClick()">
+                <clr-spinner *ngIf="isLoading" [clrInline]="true"></clr-spinner>
+                <clr-icon [hidden]="isLoading" shape="refresh"></clr-icon>
+                Refresh
+            </button>
+        </div>
+    </div>
+
+    <div class="header-actions">
+        <!-- <clr-dropdown class="dropdown bottom-left" -->
+        <!-- [clrCloseMenuOnItemClick]="false"> -->
+        <!-- <button class="nav-text" clrDropdownToggle> -->
+        <!-- <clr-icon -->
+        <!-- shape="bell" -->
+        <!-- [class.is-solid]="!alarm.muted" -->
+        <!-- [class.is-danger]="alarm.isPlaying"> -->
+        <!-- </clr-icon> -->
+        <!-- </button> -->
+        <!-- <div class="dropdown-menu"> -->
+        <!-- <h6 class="dropdown-header"> -->
+        <!-- {{alarm.muted ? 'Muted' : 'Unmuted'}} -->
+        <!-- </h6> -->
+        <!-- <button clrDropdownItem (click)="toggleAlarmMute()"> -->
+        <!-- {{alarm.muted ? 'Unmute' : 'Mute'}} -->
+        <!-- </button> -->
+        <!-- <div class="dropdown-divider"></div> -->
+        <!-- <button clrDropdownItem (click)="playAlarm()"> -->
+        <!-- Test sound -->
+        <!-- </button> -->
+        <!-- </div> -->
+        <!-- </clr-dropdown> -->
+
+        <clr-dropdown>
+            <button class="nav-text" clrDropdownTrigger>
+                Links
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu [clrPosition]="'bottom-right'" *clrIfOpen>
+              <a href="http://srv-s2d16-22-01.cms/runcontrol-old/overview"
+                 target="_blank"
+                 clrDropdownItem>
+                  Old runcontrol (/runcontrol-old)
+              </a>
+
+              <a href="https://cmsonline.cern.ch/webcenter/portal/cmsonline/pages_common/elog?__adfpwp_action_portlet=623564097&__adfpwp_backurl=https%3A%2F%2Fcmsonline.cern.ch%3A443%2Fwebcenter%2Fportal%2Fcmsonline%2Fpages_common%2Felog%3FMedia-Type%3Dscreen%26Media-Feature-Scan%3D0%26Media-Feature-Orientation%3Dlandscape%26Media-Feature-Device-Height%3D1200%26Media-Feature-Height%3D757%26_afrWindowMode%3D0%26Media-Feature-Monochrome%3D0%26Font-Size%3D16%26Media-Feature-Color%3D8%26Media-Featured-Grid%3D0%26_afrLoop%3D7174075413710510%26Media-Feature-Resolution%3D96%26Media-Feature-Width%3D1435%26Media-Feature-Device-Width%3D1920%26Media-Feature-Color-Index%3D0%26Adf-Window-Id%3Dw28%26__adfpwp_mode.623564097%3D1&_piref623564097.strutsAction=%2FviewSubcatMessages.do%3FcatId%3D493%26subId%3D851%26page%3D1"
+                 target="_blank"
+                 clrDropdownItem>
+                  Elog
+              </a>
+
+              <a href="https://cmsonline.cern.ch/webcenter/portal/cmsonline/pages_common/dcs/dipbrowser?wc.contentSource="
+                 target="_blank"
+                 clrDropdownItem>
+                  DIP Browser
+              </a>
+
+              <a href="http://srv-s2d16-22-01.cms/webmonitor/summary"
+                 target="_blank"
+                 clrDropdownItem>
+                  Webmonitor
+              </a>
+
+              <a href="https://cmsoms.cern.ch/cms/snapshots/bril"
+                 target="_blank"
+                 clrDropdownItem>
+                  CMS OMS BRIL Snapshots
+              </a>
+
+              <a href="http://cmsrc-lumi.cms:5009/logs"
+                 target="_blank"
+                 clrDropdownItem>
+                  Logs
+              </a>
+
+              <a href="https://op-webtools.web.cern.ch/vistar/vistars.php"
+                 target="_blank"
+                 clrDropdownItem>
+                  Vistars
+              </a>
+
+              <a href="http://kvm-s3562-3-ip157-32.cms:9911/urn:xdaq-application:lid=10"
+                 target="_blank"
+                 clrDropdownItem>
+                  <img src="assets/img/XDAQLogoSpeedial.png" style="height:2em;"/>
+              </a>
+            </clr-dropdown-menu>
+        </clr-dropdown>
+
+    </div>
+</header>

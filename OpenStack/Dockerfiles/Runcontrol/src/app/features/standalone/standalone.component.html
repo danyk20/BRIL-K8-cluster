@@ -1,0 +1,40 @@
+<clr-main-container>
+    <div class="content-container">
+        <div class="content-area">
+
+            <button class="btn" (click)="refresh()">Refresh</button>
+            <span class="heading">{{path}}</span>
+
+            <div class="clr-row">
+                <div class="clr-col-sm-6" style="text-align: right">
+                    <h2>State: <code>{{state}}</code></h2>
+                    <div>
+                        <clr-icon
+                            *ngIf="stateIcon"
+                            size="72"
+                            [attr.shape]="stateIcon"
+                            [class]="stateIconClass">
+                        </clr-icon>
+                        <span
+                            *ngIf="stateSpinner"
+                            class="spinner spinner-lg">
+                        </span>
+                    </div>
+                </div>
+                <div class="clr-col-sm-6" style="text-align: left">
+                    <div class="dropdown open">
+                        <div class="dropdown-menu">
+                            <config-action-menu
+                                [path]="path"
+                                [state]="state"
+                                [hideEditLink]="true">
+                            </config-action-menu>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <bc-editor #editor [path]="path"></bc-editor>
+        </div>
+    </div>
+</clr-main-container>

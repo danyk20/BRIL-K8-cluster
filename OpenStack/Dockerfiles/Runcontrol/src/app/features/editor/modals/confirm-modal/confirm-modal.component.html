@@ -1,0 +1,20 @@
+<clr-modal #modal [(clrModalOpen)]="isOpen" [clrModalClosable]="true">
+    <h3 class="modal-title">Comment & Confirm</h3>
+    <div class="modal-body">
+        <clr-input-container>
+            <input clrInput
+                type="text"
+                [(ngModel)]="comment"
+                placeholder="Comment"/>
+        </clr-input-container>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" (click)="close()">
+            Cancel
+        </button>
+
+        <button type="button" class="btn btn-primary" (click)="confirm()">
+            Confirm
+        </button>
+    </div>
+</clr-modal>

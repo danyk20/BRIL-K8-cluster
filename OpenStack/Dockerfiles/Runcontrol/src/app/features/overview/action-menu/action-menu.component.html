@@ -1,0 +1,44 @@
+<label class="dropdown-header">{{name}}</label>
+<a *ngIf="!hideEditLink"
+   class="dropdown-item"
+   [routerLink]="'/editor' + path">
+    <b>Edit</b> <small>configuration</small>
+</a>
+<button class="dropdown-item" (click)="sendTurnON()"
+        [disabled]="disabledActionButtons.turnon"
+        [class.disabled]="disabledActionButtons.turnon">
+    <b>Turn ON</b> <small>executive</small>
+</button>
+<button class="dropdown-item" (click)="sendTurnOFF()"
+        [disabled]="disabledActionButtons.turnoff"
+        [class.disabled]="disabledActionButtons.turnoff">
+    <b>Turn OFF</b> <small>executive</small>
+</button>
+<button class="dropdown-item disabled" (click)="sendReset()"
+        [disabled]="disabledActionButtons.reset"
+        [class.disabled]="disabledActionButtons.reset">
+    <b>Reset</b> <small>executive</small>
+</button>
+<button class="dropdown-item" (click)="sendCreate()"
+        [disabled]="disabledActionButtons.create"
+        [class.disabled]="disabledActionButtons.create">
+    <b>Create</b> <small>function manager</small>
+</button>
+<button class="dropdown-item" (click)="sendDestroy()"
+        [disabled]="disabledActionButtons.destroy"
+        [class.disabled]="disabledActionButtons.destroy">
+    <b>Destroy</b> <small>function manager</small>
+</button>
+
+<div *ngIf="configDetails && stateIsON" class="deck-buttons">
+<hr/>
+<a [href]="'http://' + configDetails.executive.host + ':' + configDetails.executive.port"
+   target="_blank">
+    <img src="assets/img/xdaqapplication.png" style="height: 2em"/>
+</a>
+<a *ngIf="path.split('/')[3] === 'global'"
+   [href]="webLogsURL"
+   target="_blank">
+    <img src="assets/img/logs.png" style="height: 2em"/>
+</a>
+</div>

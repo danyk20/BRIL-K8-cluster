@@ -1,0 +1,16 @@
+.bc-header {
+    flex-wrap: wrap;
+    height: initial;
+}
+
+.header-actions.bc-header-actions-left {
+    justify-content: flex-start;
+}
+
+.bc-header-item {
+    line-height: 60px;
+}
+
+clr-dropdown {
+    margin-right: 10px;
+}

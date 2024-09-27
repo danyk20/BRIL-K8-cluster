@@ -1,0 +1,426 @@
+{
+    "timers": [29, 39],
+    "widgets": [{
+        "type": "time-query",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 64
+            },
+            "wrapper": {
+                "title": "Time range query"
+            },
+            "widget": {
+                "channel": 1
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 33.33,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX average phase",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "yAxisTitle": "Phase [ps]",
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "liveWindow": 3600000,
+                "queryChannel": 1,
+                "sources": [{
+                    "index": "cmsos-data-bril-bptxprocessormon",
+                    "timestampField": "timestamp",
+                    "fields": [{
+                        "name": "avg_phase_b1",
+                        "seriesName": "Phase B1"
+                    }, {
+                        "name": "avg_phase_b2",
+                        "seriesName": "Phase B2"
+                    }],
+                    "terms": {
+                        "flash_key" : "@http://vmepc-s2d16-08-01.cms:58008-121-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 33.33,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX average per-bunch length",
+                "yAxisTitle": "Length [ns]",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "yAxisTitle": "Length [ns]",
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "liveWindow": 3600000,
+                "queryChannel": 1,
+                "sources": [{
+                    "index": "cmsos-data-bril-bptxprocessormon",
+                    "timestampField": "timestamp",
+                    "fields": [{
+                        "name": "avg_length_b1",
+                        "seriesName": "Length B1"
+                    }, {
+                        "name": "avg_length_b2",
+                        "seriesName": "Length B2"
+                    }],
+                    "terms": {
+                        "flash_key" : "@http://vmepc-s2d16-08-01.cms:58008-121-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 33.33,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX average per-bunch intensity",
+                "yAxisTitle": "×10^11 protons",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "yAxisTitle": "Intensity [10^11 protons]",
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "liveWindow": 3600000,
+                "queryChannel": 1,
+                "sources": [{
+                    "index": "cmsos-data-bril-bptxprocessormon",
+                    "timestampField": "timestamp",
+                    "fields": [{
+                        "name": "avg_intensity_b1",
+                        "seriesName": "Intensity B1"
+                    }, {
+                        "name": "avg_intensity_b2",
+                        "seriesName": "Intensity B2"
+                    }],
+                    "terms": {
+                        "flash_key" : "@http://vmepc-s2d16-08-01.cms:58008-121-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+
+            "container": {
+                "width": 33.33,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX number of bunches",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "max",
+                "liveWindow": 7200000,
+                "yAxisTitle": "Bunches per orbit",
+                "refreshSize": 900,
+                "queryChannel": 1,
+                "sources": [{
+                    "index": "cmsos-data-bril-brilsummary",
+                    "timestampField": "timestamp",
+                    "fields": [
+                        {"name": "B1_bunches"},
+                        {"name": "B2_bunches"},
+                        {"name": "B1orB2"},
+                        {"name": "B1andB2"},
+                        {"name": "B1notB2", "hidden": true},
+                        {"name": "B2notB1", "hidden": true}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 33.33,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX deltaT (from summary)",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "yAxisTitle": "t(b1) - t(b2) [ns]",
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "liveWindow": 3600000,
+                "refreshSize": 900,
+                "queryChannel": 1,
+                "sources": [{
+                    "index": "cmsos-data-bril-brilsummary",
+                    "timestampField": "timestamp",
+                    "fields": [
+                        {"name": "bptx_deltaT"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "array-snapshot",
+        "config": {
+            "container": {
+                "width": 33.33,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX bunch-by-bunch phases",
+                "initialTimer": 0,
+                "started": true
+            },
+            "widget": {
+                "chartType": "scattergl",
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-bptxprocessormon",
+                "timestampField": "timestamp",
+                "runLsQueriesEnabled": true,
+                "runField": "runnum",
+                "lsField": "lsnum",
+                "legend": "right",
+                "xAxisTitle": "Bunch index",
+                "xOffset": 1,
+                "yAxisTitle": "Phase [ps]",
+                "fields": [{
+                    "name": "phase_b1",
+                    "mask": "intensity_b1",
+                    "seriesName": "Phase B1"
+                }, {
+                    "name": "phase_b2",
+                    "mask": "intensity_b2",
+                    "seriesName": "Phase B2"
+                }]
+            }
+        }
+    }, {
+        "type": "time-query",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 64
+            },
+            "wrapper": {
+                "title": "Time range query (BX plots)"
+            },
+            "widget": {
+                "channel": 2
+            }
+        }
+    }, {
+        "type": "array-heatmap",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX phase B1",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-bptxprocessormon",
+                "timestampField": "timestamp",
+                "field": "phase_b1",
+                "liveWindow": 3600000,
+                "filterZeros": true,
+                "refreshSize": 60,
+                "queryChannel": 2,
+                "yAxisTitle": "Bunch index",
+                "yOffset": 1,
+                "zAxisTitle": "Phase [ps]",
+                "terms": {
+                    "flash_key" : "@http://vmepc-s2d16-08-01.cms:58008-121-"
+                }
+            }
+        }
+    }, {
+        "type": "array-heatmap",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX phase B2",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-bptxprocessormon",
+                "timestampField": "timestamp",
+                "field": "phase_b2",
+                "liveWindow": 3600000,
+                "filterZeros": true,
+                "refreshSize": 60,
+                "queryChannel": 2,
+                "yAxisTitle": "Bunch index",
+                "yOffset": 1,
+                "zAxisTitle": "Phase [ps]",
+                "terms": {
+                    "flash_key" : "@http://vmepc-s2d16-08-01.cms:58008-121-"
+                }
+            }
+        }
+    }, {
+        "type": "array-heatmap",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX intensity B1",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-bptxprocessormon",
+                "timestampField": "timestamp",
+                "field": "intensity_b1",
+                "liveWindow": 3600000,
+                "refreshSize": 60,
+                "queryChannel": 2,
+                "yAxisTitle": "Bunch index",
+                "yOffset": 1,
+                "zAxisTitle": "Intensity [10^7 protons]",
+                "filterZThreshold": 100,
+                "terms": {
+                    "flash_key" : "@http://vmepc-s2d16-08-01.cms:58008-121-"
+                }
+            }
+        }
+    }, {
+        "type": "array-heatmap",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX intensity B2",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-bptxprocessormon",
+                "timestampField": "timestamp",
+                "field": "intensity_b2",
+                "liveWindow": 3600000,
+                "refreshSize": 60,
+                "queryChannel": 2,
+                "yAxisTitle": "Bunch index",
+                "yOffset": 1,
+                "zAxisTitle": "Intensity [10^7 protons]",
+                "filterZThreshold": 100,
+                "terms": {
+                    "flash_key" : "@http://vmepc-s2d16-08-01.cms:58008-121-"
+                }
+            }
+        }
+    }, {
+        "type": "array-heatmap",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX length B1",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-bptxprocessormon",
+                "timestampField": "timestamp",
+                "field": "length_b1",
+                "liveWindow": 3600000,
+                "refreshSize": 60,
+                "queryChannel": 2,
+                "yAxisTitle": "Bunch index",
+                "zAxisTitle": "Length [ps]",
+                "filterZThreshold": 100,
+                "terms": {
+                    "flash_key" : "@http://vmepc-s2d16-08-01.cms:58008-121-"
+                }
+            }
+        }
+    }, {
+        "type": "array-heatmap",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 320
+            },
+            "wrapper": {
+                "title": "BPTX length B2",
+                "initialTimer": 1,
+                "started": true
+            },
+            "widget": {
+                "database": "main_daq_monitoring",
+                "index": "cmsos-data-bril-bptxprocessormon",
+                "timestampField": "timestamp",
+                "field": "length_b2",
+                "liveWindow": 3600000,
+                "refreshSize": 60,
+                "queryChannel": 2,
+                "yAxisTitle": "Bunch index",
+                "zAxisTitle": "Length [ps]",
+                "filterZThreshold": 100,
+                "terms": {
+                    "flash_key" : "@http://vmepc-s2d16-08-01.cms:58008-121-"
+                }
+            }
+        }
+    }]
+}

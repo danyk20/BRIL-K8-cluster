@@ -1,0 +1,14 @@
+<div *ngIf="(modals$ | async)" style="height: 0px; width: 0px; overflow: hidden">
+    <name-cookie-modal
+        [state]="(modals$ | async).modalNameCookie"
+        (closed)="closed('modalNameCookie')">
+    </name-cookie-modal>
+    <app-refresh-modal
+        [state]="(modals$ | async).modalAppRefresh"
+        (closed)="closed('modalAppRefresh')">
+    </app-refresh-modal>
+    <test-modal
+        [state]="(modals$ | async).modalTest"
+        (closed)="closed('modalTest')">
+    </test-modal>
+</div>

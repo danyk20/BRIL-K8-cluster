@@ -1,0 +1,450 @@
+{
+    "timers": [9],
+    "widgets": [{
+        "type": "time-query",
+        "config": {
+            "container": {
+                "width": 100,
+                "height": 64
+            },
+            "wrapper": {
+                "title": "Time range query"
+            },
+            "widget": {
+                "channel": 1
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 274
+            },
+            "wrapper": {
+                "title": "Background",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 3600000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "max",
+                "yAxisTitle": "[Hz/cm2/e11]",
+                "yAxis2Enabled": true,
+                "yAxis2Title": "% of abort",
+                "refreshSize": 900,
+                "queryChannel": 1,
+                "fillQueriesEnabled": true,
+                "runQueriesEnabled": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "run",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fill",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "sources": [{
+                    "index": "cmsos-data-bril-brilsummary",
+                    "timestampField": "timestamp",
+                    "fillField": "fillnum",
+                    "runField": "runnum",
+                    "fields": [
+                        {"name": "bkgd1", "seriesName": "BKGD1 (bcm1f beam1 Hz/cm2/E11)"},
+                        {"name": "bkgd2", "seriesName": "BKGD2 (bcm1f beam2 Hz/cm2/E11)"},
+                        {"name": "bkgd3", "seriesName": "BKGD3 (bcml % of abort)", "yAxis": 2}
+                    ],
+                    "extraFields": [
+                        {"name": "runnum", "renameTo": "run"},
+                        {"name": "fillnum", "renameTo": "fill"}],
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 274
+            },
+            "wrapper": {
+                "title": "BPTX number of bunches",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 7200000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "max",
+                "yAxisTitle": "Coincidences",
+                "refreshSize": 1800,
+                "queryChannel": 1,
+                "fillQueriesEnabled": true,
+                "runQueriesEnabled": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "runnum",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fillnum",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "sources": [{
+                    "index": "cmsos-data-bril-brilsummary",
+                    "timestampField": "timestamp",
+                    "fields": [
+                        {"name": "B1_bunches"},
+                        {"name": "B2_bunches"},
+                        {"name": "B1orB2"},
+                        {"name": "B1andB2"},
+                        {"name": "B1notB2", "hidden": true},
+                        {"name": "B2notB1", "hidden": true}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}],
+                    "runField": "runnum",
+                    "fillField": "fillnum",
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 274
+            },
+            "wrapper": {
+                "title": "BPTX deltaT",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 3600000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "refreshSize": 900,
+                "queryChannel": 1,
+                "fillQueriesEnabled": true,
+                "runQueriesEnabled": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "runnum",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fillnum",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "sources": [{
+                    "index": "cmsos-data-bril-brilsummary",
+                    "timestampField": "timestamp",
+                    "fields": [
+                        {"name": "bptx_deltaT"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}],
+                    "runField": "runnum",
+                    "fillField": "fillnum",
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 274
+            },
+            "wrapper": {
+                "title": "BPTX phase",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 3600000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "refreshSize": 900,
+                "queryChannel": 1,
+                "fillQueriesEnabled": true,
+                "runQueriesEnabled": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "runnum",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fillnum",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "sources": [{
+                    "index": "cmsos-data-bril-brilsummary",
+                    "timestampField": "timestamp",
+                    "fields": [
+                        {"name": "bptx_phase"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}],
+                    "runField": "runnum",
+                    "fillField": "fillnum",
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 274
+            },
+            "wrapper": {
+                "title": "LHC published intensities",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "scientific": true,
+                "database": "main_daq_monitoring",
+                "liveWindow": 3600000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "avg",
+                "refreshSize": 900,
+                "queryChannel": 1,
+                "fillQueriesEnabled": true,
+                "runQueriesEnabled": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "runnum",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fillnum",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "sources": [{
+                    "index": "cmsos-data-bril-brilsummary",
+                    "timestampField": "timestamp",
+                    "fields": [
+                        {"name": "beam1_intensity"},
+                        {"name": "beam2_intensity"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}],
+                    "runField": "runnum",
+                    "fillField": "fillnum",
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 274
+            },
+            "wrapper": {
+                "title": "P5 vacuum",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 3600000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "max",
+                "refreshSize": 900,
+                "yAxisTitle": "Pressure",
+                "yAxisScale": "log",
+                "queryChannel": 1,
+                "fillQueriesEnabled": true,
+                "runQueriesEnabled": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "runnum",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fillnum",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "sources": [{
+                    "index": "cmsos-data-bril-brilsummary",
+                    "timestampField": "timestamp",
+                    "fields": [
+                        {"name": "vgpb_183_1l5"},
+                        {"name": "vgpb_147_1r5"},
+                        {"name": "vgi_183_1r5"},
+                        {"name": "vgpb_220_1l5"},
+                        {"name": "vgpb_7_4r5"},
+                        {"name": "vgi_183_1l5"},
+                        {"name": "vgi_220_1l5"},
+                        {"name": "vgi_220_1r5"},
+                        {"name": "vgpb_147_1l5"},
+                        {"name": "vgpb_148_1l5"},
+                        {"name": "vgpb_148_1r5"},
+                        {"name": "vgpb_7_4l5"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}],
+                    "runField": "runnum",
+                    "fillField": "fillnum",
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }]
+            }
+        }
+    }, {
+        "type": "array-snapshot",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 274
+            },
+            "wrapper": {
+                "title": "VacHisto",
+                "initialTimer": 0,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "yAxisTitle": "picobar",
+                "yAxisScale": "log",
+                "xOffset": -6,
+                "index": "cmsos-data-bril-vachisto",
+                "timestampField": "timestamp",
+                "fields": [
+                    {"name": "vachisto", "seriesName": "VacHisto"}
+                ],
+                "terms": {
+                    "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                }
+            }
+        }
+    }, {
+        "type": "numeric-field",
+        "config": {
+            "container": {
+                "width": 50,
+                "height": 274
+            },
+            "wrapper": {
+                "title": "BCM Peak Fast Loss, Upper Limit",
+                "initialTimer": 0,
+                "infoEnabled": true,
+                "started": true
+            },
+            "widget": {
+                "legend": "left",
+                "database": "main_daq_monitoring",
+                "liveWindow": 3600000,
+                "aggregationThreshold": 7200000,
+                "aggregationAlgo": "max",
+                "refreshSize": 900,
+                "yAxisTitle": "RS1 counts",
+                "queryChannel": 1,
+                "fillQueriesEnabled": true,
+                "runQueriesEnabled": true,
+                "fieldChangeSeparators": {
+                    "enabled": true,
+                    "fields": [{
+                        "fieldname": "runnum",
+                        "text": "RUN ",
+                        "lineDash": "dot",
+                        "lineWidth": 1,
+                        "excludeWhenAggregated": true
+                    }, {
+                        "fieldname": "fillnum",
+                        "text": "FILL ",
+                        "lineWidth": 2,
+                        "lineDash": "dash",
+                        "lineColor": "purple"
+                    }]
+                },
+                "sources": [{
+                    "index": "cmsos-data-bril-brilsummary",
+                    "timestampField": "timestamp",
+                    "fields": [
+                        {"name": "bcml2_rs1_plus"},
+                        {"name": "bcml1_rs1_minus"},
+                        {"name": "bcml1_rs1_plus"},
+                        {"name": "bcml2_rs1_minus"}],
+                    "extraFields": [{"name": "runnum"}, {"name": "fillnum"}],
+                    "runField": "runnum",
+                    "fillField": "fillnum",
+                    "terms": {
+                        "flash_key": "@http://srv-s2d16-21-01.cms:50023-102-"
+                    }
+                }]
+            }
+        }
+    }]
+}

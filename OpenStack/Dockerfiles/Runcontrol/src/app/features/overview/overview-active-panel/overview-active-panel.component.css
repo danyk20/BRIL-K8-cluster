@@ -1,0 +1,62 @@
+.bc-active-card {
+    max-width: 380px;
+    flex: 1 0 300px;
+    margin-top: 12px;
+    margin-left: 6px;
+}
+
+.card .card-text {
+    font-size: 13px;
+    color: #212121;;
+}
+
+.card .card-block {
+    padding: 6px 12px;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.card .card-footer {
+    padding: 0px 0px;
+    text-align: center;
+}
+
+.card .card-header {
+    border-radius: 3px 3px 0px 0px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.bc-card-header-success {
+    background-color: #DFF0D0;
+    color: #266900;
+}
+
+.bc-card-header-danger {
+    background-color: #EBAFA6;
+    color: #A32100;
+}
+
+/* Overrides clarity default color */
+.dropdown .dropdown-toggle {
+    color: inherit;
+}
+
+@keyframes card-danger-blink-animation {
+    0%   {background-color: white;}
+    50%  {background-color: #EBAFA6;}
+    100% {background-color: white;}
+}
+
+.bc-card-danger-blink {
+    animation-name: card-danger-blink-animation;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+}
+
+label {
+    width: 20px;
+    text-align: right;
+}
