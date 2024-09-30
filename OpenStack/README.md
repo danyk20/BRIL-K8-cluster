@@ -173,5 +173,5 @@ crictl images | grep <image_name>
 
 ## Resources
 
-To understand each individual command form the kubernetes script have a look into this blog https://kanzal.com/kubernetes-with-kubeadm-on-redhat-9/
-Hands-on example how to load docker image on Slave Node can be found in this blog https://medium.com/@tanmaybhandge/how-do-you-use-the-local-images-in-kubernetes-f5cbf375079c
+- To understand each individual command form the kubernetes script have a look into this blog https://kanzal.com/kubernetes-with-kubeadm-on-redhat-9/
+- Hands-on example how to load docker image on Slave Node can be found in this blog https://medium.com/@tanmaybhandge/how-do-you-use-the-local-images-in-kubernetes-f5cbf375079c
