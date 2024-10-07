@@ -357,6 +357,10 @@ firewall-cmd --permanent --add-service=http
 systemctl restart firewalld
 firewall-cmd --list-all # verify configuration
 ```
+## Troubleshooting
+
+### 502 Bad Gateway
+- most likely incorrect firewall settings
 
 ## Resources
 
@@ -367,3 +371,4 @@ firewall-cmd --list-all # verify configuration
 - Video tutorial for Haproxy and Ingress deployment https://www.youtube.com/watch?v=chwofyGr80c
 - Calico networking explained https://www.youtube.com/watch?v=NFApeJRXos4
 - Creating a K8 cluster with CentOS https://gitlab.cern.ch/bril/readmes/-/tree/master/k8/core?ref_type=heads
+- Ingress crash course https://www.youtube.com/watch?v=GhZi4DxaxxE
