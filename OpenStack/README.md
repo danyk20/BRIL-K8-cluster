@@ -1,14 +1,16 @@
 # Creating Kubernetes cluster using CERN OpenStack
 
-- 1 Master Node
-- 2 Slave Nodes
+- 1x Master Node
+- 2x Slave Nodes
 
 ## Prerequisites
 
-- Public key uploaded
-- Created project
+- Public key uploaded to the Openstack
+- Created Openstack project
 
 ## Instructions
+
+![Bril cluster diagram](assets/cluster_diagram.png)
 
 ### Create Master Node VM
 
@@ -229,7 +231,9 @@ systemctl start haproxy
 systemctl status haproxy
 ```
 
-### Deploy ingress component and make entrypoint to the cluster public
+### Deploy ingress component
+
+- Note: Perform following actions on Master Node
 
 0. Install Git if you haven't done it yet
 
@@ -286,8 +290,10 @@ kubectl apply -f config/crd/bases/k8s.nginx.org_globalconfigurations.yaml
 
 8. Deploy NGINX Ingress as Deployment component
 
+- Note: It has to be daemon-set, because deployment doesn't work
+
 ```shell
-kubectl apply -f deployments/deployment/nginx-ingress.yaml
+kubectl apply -f deployments/daemon-set/nginx-ingress.yaml
 ```
 
 9. Confirm the NGINX Ingress Controller pods are operational and run
@@ -313,7 +319,7 @@ vi `/etc/hosts`
 11. Deploy Ingress Resource (configuration table)
 
 ```shell
-kubectl create -f ingress.yaml
+kubectl apply -f ingress.yaml
 ```
 
 12. Verify ingress
@@ -323,6 +329,35 @@ kubectl get ing
 kubectl describe ing minimal-ingress 
 ```
 
+13. Configure Firewall
+
+- Note:
+    - to list all nodes run ```kubectl get nodes``` on master node
+    - to list all pods running on specific slave node run
+      ```kubectl get pods --field-selector spec.nodeName=<node_name>``` on master node
+    - to find `cali` interface number attached to the pod run
+      ```kubectl exec <pod_name> -- ip a | grep -oP 'eth0@if\K\d+'``` on master node
+    - to show interface name based on interface number
+      ```ip -details link show | grep -A1 "^<interface_number>: " | head -1 | awk -F'[@:]' '{print $2}'``` on slave node
+
+All `cali` interfaces that are attached to webmonitor/runcontrol pods must be added to the firewall configuration on all
+slave nodes!
+
+```shell
+firewall-cmd --zone=public --permanent --add-interface <interface_name>
+```
+
+![Calico one node diagram](assets/calico_diagram.png)
+
+Allow port 80 and http communication for ingress on all (master & slave) nodes
+
+```shell
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --permanent --add-service=http
+systemctl restart firewalld
+firewall-cmd --list-all # verify configuration
+```
+
 ## Resources
 
 - To understand each individual command form the kubernetes script have a look into this
@@ -330,3 +365,4 @@ kubectl describe ing minimal-ingress
 - Hands-on example how to load docker image on Slave Node can be found in this
   blog https://medium.com/@tanmaybhandge/how-do-you-use-the-local-images-in-kubernetes-f5cbf375079c
 - Video tutorial for Haproxy and Ingress deployment https://www.youtube.com/watch?v=chwofyGr80c
+- Calico networking explained https://www.youtube.com/watch?v=NFApeJRXos4
