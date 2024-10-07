@@ -366,3 +366,4 @@ firewall-cmd --list-all # verify configuration
   blog https://medium.com/@tanmaybhandge/how-do-you-use-the-local-images-in-kubernetes-f5cbf375079c
 - Video tutorial for Haproxy and Ingress deployment https://www.youtube.com/watch?v=chwofyGr80c
 - Calico networking explained https://www.youtube.com/watch?v=NFApeJRXos4
+- Creating a K8 cluster with CentOS https://gitlab.cern.ch/bril/readmes/-/tree/master/k8/core?ref_type=heads
