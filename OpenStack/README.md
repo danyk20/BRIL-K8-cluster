@@ -310,10 +310,10 @@ kubectl get pods --namespace=nginx-ingress
 vi `/etc/hosts`
 ```
 
-- Note: Hostname `bril` must be the same as the host from `ingress.yaml`
+- Note: Hostname `bril-cluster` must be the same as the host from `ingress.yaml`
 
 ```text
-<HAPROXY_IP>    bril
+<HAPROXY_IP>    bril-cluster
 ```
 
 11. Deploy Ingress Resource (configuration table)

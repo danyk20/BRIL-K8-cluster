@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: bril # IP is not accepted
+    - host: bril-cluster # IP is not accepted
       http:
         paths:
           - path: /webmonitor18
