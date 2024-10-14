@@ -10,3 +10,16 @@ spec:
       port: 3000
       targetPort: 3000
   type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: runcontrol-server-service
+spec:
+  selector:
+    app: runcontrol-server
+  ports:
+    - protocol: TCP
+      port: 5010
+      targetPort: 5010
+  type: ClusterIP

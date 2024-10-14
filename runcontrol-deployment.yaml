@@ -18,3 +18,24 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: runcontrol-server-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: runcontrol-server
+  template:
+    metadata:
+      labels:
+        app: runcontrol-server
+    spec:
+      containers:
+      - name: bril-runcontrol-server
+        image: bril-runcontrol-server:0.0.1
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 5010
