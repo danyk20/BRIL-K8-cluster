@@ -349,8 +349,6 @@ firewall-cmd --zone=public --permanent --add-interface <interface_name>
 
 ![Calico one node diagram](assets/calico_diagram.png)
 
-Allow port 80 and http communication for ingress on all (master & slave) nodes
-
 ```shell
 firewall-cmd --permanent --add-port=80/tcp
 firewall-cmd --permanent --add-service=http
@@ -361,6 +359,14 @@ firewall-cmd --list-all # verify configuration
 
 ### 502 Bad Gateway
 - most likely incorrect firewall settings
+
+### Restart all pods from deployment
+
+- Note: To see all deployment names run `kubectl get deployments`
+
+```shell
+kubectl rollout restart deployment <deployment_name>
+```
 
 ## Resources
 
