@@ -153,7 +153,7 @@ source .env
 1. Build all Docker images locally
 
 ```shell
-docker build -t <image_name>:<image_tag> --build-arg ARCHITECTURE=$ARCHITECTURE --build-arg NODE_VERSION=$NODE_VERSION <directory_with_dockerfile>
+docker buildx build --platform linux/<architecture> -t <image_name>:<image_tag> --build-arg ARCHITECTURE=<architecture> <directory_with_dockerfile>
 ```
 
 2. Save the Image as a Tar File
