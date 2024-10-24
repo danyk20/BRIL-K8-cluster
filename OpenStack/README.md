@@ -355,9 +355,11 @@ firewall-cmd --permanent --add-service=http
 systemctl restart firewalld
 firewall-cmd --list-all # verify configuration
 ```
+
 ## Troubleshooting
 
 ### 502 Bad Gateway
+
 - most likely incorrect firewall settings
 
 ### Restart all pods from deployment
@@ -366,6 +368,20 @@ firewall-cmd --list-all # verify configuration
 
 ```shell
 kubectl rollout restart deployment <deployment_name>
+```
+
+### Access running container with root privileges
+
+1. From Master node get container ID and node on which it is running
+
+```shell
+kubectl get pod <pod_name> -o jsonpath="{.status.containerStatuses[].containerID}" | sed 's,.*//,,'
+```
+
+2. Access it as a root via `ctr` from the node where it is running
+
+```shell
+ctr --namespace=k8s.io task exec -t --user root --exec-id 1 <container_id> /bin/bash
 ```
 
 ## Resources
