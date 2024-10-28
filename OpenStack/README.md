@@ -231,6 +231,122 @@ systemctl start haproxy
 systemctl status haproxy
 ```
 
+### Configure NFS Server & Client
+
+#### Master Node (Server)
+
+1. Install NFS server
+
+```shell
+dnf install -y nfs-utils
+```
+
+2. Set system DNS name
+
+- Set domain name `Domain = bril-cluster`
+
+```shell
+nano /etc/idmapd.conf
+```
+
+3. Start & Enable NFS server
+
+```shell
+sudo systemctl start nfs-server
+sudo systemctl enable nfs-server
+```
+
+4. Verify status
+
+```shell
+systemctl status nfs-server
+```
+
+5. Create shared directory
+
+```shell
+mkdir -p /mnt/shared
+```
+
+6. Update ownership of that directory
+
+```shell
+chown -R nobody:nobody /mnt/shared
+chmod 775 /mnt/shared
+```
+
+7. Configure NFS server to share that directory
+
+- Add your slaves IP addresses and their permissions
+    - ```text
+    /mnt/shared <slave_1_ip>(rw,sync,no_subtree_check)
+    /mnt/shared <slave_2_ip>(rw,sync,no_subtree_check)
+    ```
+
+```shell
+nano /etc/exports
+```
+
+8. Restart to apply changes
+
+```shell
+systemctl restart nfs-server
+```
+
+9. Verify configuration
+
+```shell
+exportfs -v
+```
+
+10. Allow NFS Server in the firewall
+
+```shell
+firewall-cmd --add-service={nfs,nfs3,mountd,rpc-bind} --permanent
+firewall-cmd --reload
+```
+
+#### Slave Nodes (Client)
+
+1. Install NFS client
+
+```shell
+dnf install -y nfs-utils
+```
+
+2. Check available shared directories on the NFS server
+
+```shell
+showmount -e <master_ip>
+```
+
+3. Create directory that will be used to mount NFS shared directory
+
+```shell
+mkdir -p /shared
+```
+
+4. Configure auto-mount
+
+- Add following line `<master_ip>:/mnt/shared    /shared   nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0`
+
+```shell
+nano /etc/fstab
+```
+
+5. Mount NFS shared directory
+
+```shell
+systemctl daemon-reload
+mount -a
+```
+
+6. Verify successful mount
+
+```shell
+df -h
+```
+
 ### Deploy ingress component
 
 - Note: Perform following actions on Master Node
@@ -394,3 +510,4 @@ ctr --namespace=k8s.io task exec -t --user root --exec-id 1 <container_id> /bin/
 - Calico networking explained https://www.youtube.com/watch?v=NFApeJRXos4
 - Creating a K8 cluster with CentOS https://gitlab.cern.ch/bril/readmes/-/tree/master/k8/core?ref_type=heads
 - Ingress crash course https://www.youtube.com/watch?v=GhZi4DxaxxE
+- NFS server & client on Alma 9 https://www.howtoforge.com/how-to-install-nfs-server-and-client-on-almalinux-9/
