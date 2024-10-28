@@ -476,7 +476,7 @@ firewall-cmd --list-all # verify configuration
 
 ### 502 Bad Gateway
 
-- most likely incorrect firewall settings
+- most likely incorrect firewall settings (missing port or interface)
 
 ### Restart all pods from deployment
 
@@ -485,6 +485,8 @@ firewall-cmd --list-all # verify configuration
 ```shell
 kubectl rollout restart deployment <deployment_name>
 ```
+
+- Reminder: After redeployment/restart of pods you must add newly generated virtual interfaces to the firewall
 
 ### Access running container with root privileges
 
