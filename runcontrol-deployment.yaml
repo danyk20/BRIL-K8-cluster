@@ -1,3 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: persistent-logs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -39,3 +50,10 @@ spec:
         imagePullPolicy: Never
         ports:
           - containerPort: 5010
+        volumeMounts:
+          - mountPath: /var/log/
+            name: logs-volume
+      volumes:
+        - name: logs-volume
+          persistentVolumeClaim:
+            claimName: persistent-logs
