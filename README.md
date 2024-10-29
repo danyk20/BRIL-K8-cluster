@@ -63,11 +63,10 @@
 
 ### Custom Kubernetes CLuster Instruction
 
-1. Create Secret component
-
 ```shell
-# Create Secret component
+# Create Secret & ConfigMap component
 kubectl apply -f secret.yaml
+kubectl apply -f configmap.yaml
 # Create persistent storage
 kubectl apply -f storage.yaml
 # Start all pods

@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global.config
+data:
+  config.json: |
+    {
+      "logfile": "/var/log/brildaq_configurator.log",
+      "loglevel": "DEBUG",
+      "action_logfile": "/var/log/brildaq_configurator_action.log",
+      "authfile": "/brildata/db/db.ini",
+      "duckauthfile": "/brilpro/duck/DUCK.properties",
+      "oracleclient": "/usr/lib/oracle/19.24/client64/lib",
+      "easyconfigmap": "easyconfigmap.json",
+      "easyconfigdir": "easyconfig",
+      "xdaqxmlnamespace": "http://xdaq.web.cern.ch/xdaq/xsd/2004/XMLConfiguration-30",
+      "owners": {
+        "lumidev": {
+          "rcms_location": "cmsrc-lumidev.cms:46000"
+        },
+        "lumipro": {
+          "rcms_location": "cmsrc-lumi.cms:26000"
+        }
+      }
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cherry.config
+data:
+  cherrypy.config: |
+    [global]
+    server.socket_host = "0.0.0.0"
+    server.socket_port = 5010
+    log.access_file = "/var/log/cherrypy_brildaq_access.log"
+    log.error_file = "/var/log/cherrypy_brildaq_error.log"
+    tree.wsgi = {'/': wsgi.app}

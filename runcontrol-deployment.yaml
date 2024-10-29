@@ -54,12 +54,26 @@ spec:
           - mountPath: /var/log/
             name: logs-volume
           - mountPath: /root/RunControl/brildata/db
-            name: db-file
+            name: db-authentication
             readOnly: true
+          - mountPath: /root/RunControl/config.json
+            name: database-config
+            readOnly: true
+            subPath: config.json
+          - mountPath: /root/RunControl/cherrypy.config
+            name: flask-config
+            readOnly: true
+            subPath: cherrypy.config
       volumes:
         - name: logs-volume
           persistentVolumeClaim:
             claimName: persistent-logs
-        - name: db-file
+        - name: db-authentication
           secret:
             secretName: oracle-db.config
+        - name: database-config
+          configMap:
+            name: global.config
+        - name: flask-config
+          configMap:
+            name: cherry.config
