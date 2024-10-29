@@ -53,7 +53,13 @@ spec:
         volumeMounts:
           - mountPath: /var/log/
             name: logs-volume
+          - mountPath: /root/RunControl/brildata/db
+            name: db-file
+            readOnly: true
       volumes:
         - name: logs-volume
           persistentVolumeClaim:
             claimName: persistent-logs
+        - name: db-file
+          secret:
+            secretName: oracle-db.config
