@@ -1,15 +1,16 @@
 # BRIL Cluster
 
-## Development 
+## Development
 
 ### Prerequisites
+
 - Docker
 - Git
 - minikube
 
 ### Environment preparation
 
-0. Build/download all (bril-webmonitor, bril-runcontrol-client, bril-nginx) containers. 
+0. Build/download all (bril-webmonitor, bril-runcontrol-client, bril-nginx) containers.
     ```shell
     docker build -t bril-nginx:0.0.1 --build-arg ARCHITECTURE="aarch64" .
     ```
@@ -17,7 +18,7 @@
     ```shell
     minikube start —vm-driver=docker
     ```
-   
+
 2. pull images from local repository (it takes around 1 min)
     ```shell
     minikube image load bril-webmonitor:0.0.1
@@ -25,7 +26,7 @@
     minikube image load bril-nginx:0.0.1
     ```
 
-### Instruction (Manual)
+### Minikube Instruction (Manual)
 
 1. start all apps
     ```shell
@@ -43,7 +44,7 @@
     kubectl apply -f  nginx-service.yaml
     ```
 
-### Instruction (Helm)
+### Minikube Instruction (Helm)
 
 1. Start runcontrol client with attached service
    ```shell
@@ -60,16 +61,33 @@
    helm install bril-nginx angular-apps --values angular-apps/nginx_values.yaml
    ```
 
+### Custom Kubernetes CLuster Instruction
 
-### Cluster entrypoint exposure
+1. Create Secret component
+
+```shell
+# Create Secret component
+kubectl apply -f secret.yaml
+# Create persistent storage
+kubectl apply -f storage.yaml
+# Start all pods
+kubectl apply -f runcontrol-deployment.yaml
+kubectl apply -f webmonitor-deployment.yaml
+# Attach kubernetes services to the running pods
+kubectl apply -f runcontrol-service.yaml
+kubectl apply -f webmonitor-service.yaml
+# Start Ingress component to route the traffic
+kubectl apply -f ingress.yaml
+```
+
+### Cluster Minikube entrypoint exposure
 
 1. get entrypoint url
    ```shell
    minikube service entrypoint
    ``` 
 
-
-### Delete cluster (Manual)
+### Delete Minikube cluster (Manual)
 
 ```shell
 kubectl delete all --all
@@ -77,7 +95,8 @@ minikube stop
 minikube delete --all=true --purge=true
 ```
 
-### Delete cluster (Helm)
+### Delete Minikube cluster (Helm)
+
 ```shell
 helm delete bril-nginx
 helm delete bril-webmonitor    
