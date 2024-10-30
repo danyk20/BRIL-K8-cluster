@@ -16,7 +16,7 @@
     ```
 1. initialize minikube
     ```shell
-    minikube start —vm-driver=docker
+    minikube start --vm-driver=docker
     ```
 
 2. pull images from local repository (it takes around 1 min)
@@ -78,6 +78,11 @@ kubectl apply -f webmonitor-service.yaml
 # Start Ingress component to route the traffic
 kubectl apply -f ingress.yaml
 ```
+
+-Note: `secret.yaml` allows to change `db.ini` file, "backed" in the image, containing database credentials without need
+to build new image, also the same is true for `configmap.yaml` allows to change flask configuration `cherry.config` and
+database configuration `config.json` without need to rebuild the image. Keep in mind you need to [restart](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_rollout/kubectl_rollout_restart/) the 
+deployment after applying the change in the ConfigMap or Secret.
 
 ### Cluster Minikube entrypoint exposure
 
