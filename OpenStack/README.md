@@ -116,9 +116,9 @@
 3. Run `master-config.sh`
     - Note: Save the last line of the output, you will need it (token and hash) for the registering slaves
 
-### Configure Kubernetes in Slave Node
+### Configure Kubernetes in every Slave Node
 
-1. Connect to Master Node
+1. Connect to Slave Node
     - Note: you need to be in internal network (e.g. lxplus)
    ```shell
    ssh -i ~/.ssh/<PRIVATE_KEY> root@<SLAVE_NODE_IP>
@@ -128,6 +128,7 @@
 3. Run `slave-config.sh`
     - Note: Use token and hash from last line in master node, if you didn't save it just run
       `kubeadm token create --print-join-command` on master node
+4. Repeat process for all remaining Slave Nodes
 
 ### Validate cluster
 
